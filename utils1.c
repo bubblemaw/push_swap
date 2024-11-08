@@ -1,18 +1,24 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_atoi.c                                          :+:      :+:    :+:   */
+/*   utils1.c                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: masase <masase@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/08/15 16:21:37 by maw               #+#    #+#             */
-/*   Updated: 2024/11/08 16:09:51 by masase           ###   ########.fr       */
+/*   Created: 2024/11/08 14:38:40 by masase            #+#    #+#             */
+/*   Updated: 2024/11/08 16:57:11 by masase           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "libft.h"
+#include "push_swap.h"
 
-int	ft_atoi(const char *str)
+int	error(void)
+{
+	write(1, "Error\n", 6);
+	return (0);
+}
+
+int	ft_atoi_swap(const char *str)
 {
 	int	i;
 	int	signe;
@@ -21,8 +27,6 @@ int	ft_atoi(const char *str)
 	resultat = 0;
 	signe = 1;
 	i = 0;
-	while ((str[i] >= 9 && str[i] <= 13) || str[i] == 32)
-		i++;
 	if (str[i] == '+')
 		i++;
 	else if (str[i] == '-')
@@ -36,18 +40,7 @@ int	ft_atoi(const char *str)
 		resultat = (str[i] - '0') + resultat;
 		i++;
 	}
-	resultat *= signe;
-	return (resultat);
+	if (str[i] < '0' || str[i] > '9')
+		return (error());
+	return (resultat * signe);
 }
-
-// #include <stdlib.h>
-// #include <stdio.h>
-// int main()
-// {
-// const char nombre[] = "  ++46";
-
-// printf("%d\n", ft_atoi(nombre));
-// printf("%d\n", atoi(nombre));
-
-// return (0);
-// }

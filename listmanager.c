@@ -1,30 +1,31 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   push_swap.h                                        :+:      :+:    :+:   */
+/*   listmanager.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: masase <masase@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/11/04 17:11:15 by masase            #+#    #+#             */
-/*   Updated: 2024/11/08 16:24:21 by masase           ###   ########.fr       */
+/*   Created: 2024/11/08 12:20:56 by masase            #+#    #+#             */
+/*   Updated: 2024/11/08 12:33:00 by masase           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef PUSH_SWAP_H
-# define PUSH_SWAP_H
-# include "LIBFT/libft.h"
+#include "push_swap.h"
 
-typedef struct s_lista
+void	ft_lstadd_front_bis(t_lista **lst, t_lista *new)
 {
-	int				nb;
-	struct s_lista	*next;
-}					t_lista;
+	new->next = *lst;
+	*lst = new;
+}
 
-t_lista	*ft_lstnew_bis(int nb);
-void	ft_lstadd_front_bis(t_lista **lst, t_lista *new);
-int		countworda(const char *str, char c);
-void	printlist(t_lista *lst);
-void	twoargmanager(char *str, t_lista **lst);
-int		ft_atoi_swap(const char *str);
+t_lista	*ft_lstnew_bis(int nb)
+{
+	t_lista	*nod;
 
-#endif
+	nod = malloc(sizeof(t_lista));
+	if (nod == NULL)
+		return (NULL);
+	nod->nb = nb;
+	nod->next = NULL;
+	return (nod);
+}

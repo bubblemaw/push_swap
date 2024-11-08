@@ -6,13 +6,15 @@
 #    By: masase <masase@student.42.fr>              +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/09/24 17:01:35 by maw               #+#    #+#              #
-#    Updated: 2024/10/24 17:30:37 by masase           ###   ########.fr        #
+#    Updated: 2024/11/08 14:39:05 by masase           ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 NAME =	push_swap.a
 
-SRCS =	main.c
+SRCS =	main.c \
+		listmanager.c \
+		utils1.c \
 		
 OBJS := $(SRCS:%.c=%.o)
 
