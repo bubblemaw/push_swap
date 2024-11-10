@@ -6,7 +6,7 @@
 /*   By: masase <masase@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/04 17:35:04 by masase            #+#    #+#             */
-/*   Updated: 2024/11/08 16:23:38 by masase           ###   ########.fr       */
+/*   Updated: 2024/11/10 17:48:11 by masase           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -50,13 +50,25 @@ void	printlist(t_lista *lst)
 {
 	while (lst)
 	{
-		printf("%d ->", lst->nb);
+		printf("%ld ->", lst->nb);
 		lst = lst->next;
 	}
 	printf("NULL\n");
 }
 
-void	twoargmanager(char *str, t_lista **lst)
+void	freetab(char **tab)
+{
+	int	i;
+
+	i = 0;
+	while (tab[i])
+	{
+		free(tab[i]);
+		i++;
+	}
+}
+
+int	twoargmanager(char *str, t_lista **lst)
 {
 	int		i;
 	char	**tab;
@@ -67,22 +79,23 @@ void	twoargmanager(char *str, t_lista **lst)
 	i = countworda(str, 32) - 1;
 	tab = ft_split(str, ' ');
 	if (!tab)
-		return ;
+		return (0);
 	while (i >= 0)
 	{
 		new_node = ft_lstnew_bis(ft_atoi_swap(tab[i]));
+		if (new_node->nb == ERROR_NB)
+		{
+			ft_lstclear_bis(lst);
+			return (0);
+		}
 		ft_lstadd_front_bis(lst, new_node);
 		i--;
 	}
-	i = 0;
-	while (tab[i])
-	{
-		free(tab[i]);
-		i++;
-	}
+	freetab(tab);
+	return (1);
 }
 
-void	argmanager(t_lista **lst, int arg, char **argv)
+int	argmanager(t_lista **lst, int arg, char **argv)
 {
 	int		i;
 	t_lista	*new_node;
@@ -91,26 +104,60 @@ void	argmanager(t_lista **lst, int arg, char **argv)
 	while (i > 0)
 	{
 		new_node = ft_lstnew_bis(ft_atoi_swap(argv[i]));
+		if (new_node->nb == ERROR_NB)
+		{
+			ft_lstclear_bis(lst);
+			return (0);
+		}
 		ft_lstadd_front_bis(lst, new_node);
 		i--;
 	}
+	return (1);
+}
+
+int	checkdouble_checknbmax(t_lista **lst)
+{
+	t_lista	*temp;
+	t_lista	*current;
+
+	current = *lst;
+	while (current)
+	{
+		temp = current->next;
+		while (temp)
+		{
+			if (temp->nb == current->nb)
+				return (0);
+			temp = temp->next;
+		}
+	current = current->next;
+	}
+	current = *lst;
+	while (current)
+	{
+		if (current->nb < -2147483648 || current->nb > 2147483647)
+			return (0);
+		current = current->next;
+	}
+	return (1);
 }
 
 int	main(int argc, char **argv)
 {
-	int		i;
 	t_lista	*current;
 
-
 	current = NULL;
-	i = 0;
 	if (argc < 2)
 		return (0);
-	else if (argc == 2)
-		twoargmanager(argv[1], &current);
-	else if (argc > 2)
-		argmanager(&current, argc, argv);
+	else if (argc == 2 && twoargmanager(argv[1], &current) == 0)
+		return (error());
+	else if (argc > 2 && argmanager(&current, argc, argv) == 0)
+		return (error());
+	if (checkdouble_checknbmax(&current) == 0)
+		return (error());
+
 	printlist(current);
 	return (0);
-
 }
+
+

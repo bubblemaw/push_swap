@@ -6,7 +6,7 @@
 /*   By: masase <masase@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/08 14:38:40 by masase            #+#    #+#             */
-/*   Updated: 2024/11/08 16:57:11 by masase           ###   ########.fr       */
+/*   Updated: 2024/11/10 17:46:32 by masase           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,11 +18,11 @@ int	error(void)
 	return (0);
 }
 
-int	ft_atoi_swap(const char *str)
+long int	ft_atoi_swap(const char *str)
 {
-	int	i;
-	int	signe;
-	int	resultat;
+	int			i;
+	long int	signe;
+	long int	resultat;
 
 	resultat = 0;
 	signe = 1;
@@ -34,13 +34,12 @@ int	ft_atoi_swap(const char *str)
 		signe *= -1;
 		i++;
 	}
-	while ((str[i] >= '0' && str[i] <= '9'))
+	while (str[i])
 	{
-		resultat *= 10;
-		resultat = (str[i] - '0') + resultat;
+		resultat = resultat * 10 + (str[i] - '0');
+		if (str[i] < '0' || str[i] > '9')
+			return (ERROR_NB);
 		i++;
 	}
-	if (str[i] < '0' || str[i] > '9')
-		return (error());
 	return (resultat * signe);
 }
