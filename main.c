@@ -6,7 +6,7 @@
 /*   By: masase <masase@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/04 17:35:04 by masase            #+#    #+#             */
-/*   Updated: 2024/11/10 17:48:11 by masase           ###   ########.fr       */
+/*   Updated: 2024/11/10 21:34:58 by masase           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -155,7 +155,6 @@ int	main(int argc, char **argv)
 		return (error());
 	if (checkdouble_checknbmax(&current) == 0)
 		return (error());
-
 	printlist(current);
 	return (0);
 }

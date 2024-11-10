@@ -6,7 +6,7 @@
 /*   By: masase <masase@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/04 17:11:15 by masase            #+#    #+#             */
-/*   Updated: 2024/11/10 15:12:20 by masase           ###   ########.fr       */
+/*   Updated: 2024/11/10 21:02:19 by masase           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,6 +19,7 @@ typedef struct s_lista
 {
 	long int		nb;
 	struct s_lista	*next;
+	struct s_lista	*prev;
 }					t_lista;
 
 t_lista			*ft_lstnew_bis(long int nb);
