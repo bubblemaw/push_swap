@@ -6,7 +6,7 @@
 /*   By: masase <masase@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/08 12:20:56 by masase            #+#    #+#             */
-/*   Updated: 2024/11/10 21:35:01 by masase           ###   ########.fr       */
+/*   Updated: 2024/11/11 15:44:53 by masase           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,12 @@
 
 void	ft_lstadd_front_bis(t_lista **lst, t_lista *new)
 {
+	if (new == NULL)
+		return ;
+	if (*lst != NULL)
+		(*lst)->prev = new;
 	new->next = *lst;
+	new->prev = NULL;
 	*lst = new;
 }
 
@@ -27,6 +32,7 @@ t_lista	*ft_lstnew_bis(long int nb)
 		return (NULL);
 	nod->nb = nb;
 	nod->next = NULL;
+	nod->prev = NULL;
 	return (nod);
 }
 
