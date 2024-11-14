@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   listmanager.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: masase <masase@student.42.fr>              +#+  +:+       +#+        */
+/*   By: maw <maw@student.42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/08 12:20:56 by masase            #+#    #+#             */
-/*   Updated: 2024/11/11 15:44:53 by masase           ###   ########.fr       */
+/*   Updated: 2024/11/14 16:59:54 by maw              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -50,9 +50,54 @@ void	ft_lstclear_bis(t_lista **lst)
 	*lst = NULL;
 }
 
+void	deletenod(t_lista **nod)
+{
+	t_lista	*temp;
+
+	temp = (*nod)->next;
+	free(*nod);
+	*nod = temp;
+}
+void	deletenod_last(t_lista *nod)
+{
+	t_lista	*temp;
+
+	temp = nod->prev;
+	temp->next = NULL;
+	free(nod);
+}
+
+
 void	ft_lstdelone_bis(t_lista *lst)
 {
 	free(lst);
+}
+t_lista	*ft_lstlast_bis(t_lista *lst)
+{
+	t_lista	*temp;
+
+	if (!lst)
+		return (NULL);
+	temp = lst;
+	while (temp->next)
+		temp = temp->next;
+	return (temp);
+}
+void	ft_lstadd_back_bis(t_lista **lst, t_lista *new)
+{
+	t_lista	*dernier;
+
+	if (!lst || !new)
+		return ;
+
+	if (!*lst)
+	{
+		*lst = new;
+		return ;
+	}
+	dernier = ft_lstlast_bis(*lst);
+	dernier->next = new;
+	new->next = NULL;
 }
 
 // int	main(void)

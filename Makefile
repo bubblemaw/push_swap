@@ -3,10 +3,10 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: masase <masase@student.42.fr>              +#+  +:+       +#+         #
+#    By: maw <maw@student.42.fr>                    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/09/24 17:01:35 by maw               #+#    #+#              #
-#    Updated: 2024/11/08 14:39:05 by masase           ###   ########.fr        #
+#    Updated: 2024/11/14 17:47:27 by maw              ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -15,6 +15,11 @@ NAME =	push_swap.a
 SRCS =	main.c \
 		listmanager.c \
 		utils1.c \
+		instrument_a.c \
+		instrument_b.c \
+		instrument_c.c \
+		arg_manager.c
+		
 		
 OBJS := $(SRCS:%.c=%.o)
 
