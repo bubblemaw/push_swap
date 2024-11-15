@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   main.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: maw <maw@student.42.fr>                    +#+  +:+       +#+        */
+/*   By: masase <masase@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/04 17:35:04 by masase            #+#    #+#             */
-/*   Updated: 2024/11/14 18:37:20 by maw              ###   ########.fr       */
+/*   Updated: 2024/11/15 16:55:17 by masase           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -48,6 +48,8 @@ int	main(int argc, char **argv)
 		return (error());
 	printlist(stack_a);
 	printlist(stack_b);
+	push_b(&stack_a, &stack_b);
+	push_b(&stack_a, &stack_b);
 	push_from_a_to_b(&stack_a, &stack_b);
 	printlist(stack_a);
 	printlist(stack_b);

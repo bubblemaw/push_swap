@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   push_swap.h                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: maw <maw@student.42.fr>                    +#+  +:+       +#+        */
+/*   By: masase <masase@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/04 17:11:15 by masase            #+#    #+#             */
-/*   Updated: 2024/11/14 18:43:45 by maw              ###   ########.fr       */
+/*   Updated: 2024/11/15 16:45:17 by masase           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,6 +31,7 @@ t_lista			*ft_lstlast_bis(t_lista *lst);
 void			deletenod_last(t_lista *nod);
 void			deletenod(t_lista **nod);
 int				ft_lstsize_bis(t_lista *lst);
+t_lista			*ft_lst_copy(t_lista **lst);
 
 int				countwords(const char *str, char c);
 int				checkdouble_checknbmax(t_lista **lst);

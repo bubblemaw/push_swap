@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   listmanager.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: maw <maw@student.42.fr>                    +#+  +:+       +#+        */
+/*   By: masase <masase@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/08 12:20:56 by masase            #+#    #+#             */
-/*   Updated: 2024/11/14 19:45:38 by maw              ###   ########.fr       */
+/*   Updated: 2024/11/15 15:38:56 by masase           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -113,4 +113,22 @@ int	ft_lstsize_bis(t_lista *lst)
 		i++;
 	}
 	return (i);
+}
+
+t_lista	*ft_lst_copy(t_lista **lst)
+{
+	t_lista	*temp;
+	t_lista	*newnod;
+	t_lista	*newhead;
+
+	temp = *lst;
+	newhead = ft_lstnew_bis((temp->nb));
+	temp = temp->next;
+	while (temp)
+	{
+		newnod = ft_lstnew_bis((temp->nb));
+		ft_lstadd_back_bis(&newhead, newnod);
+		temp = temp->next;
+	}
+	return (newhead);
 }
