@@ -6,7 +6,7 @@
 /*   By: maw <maw@student.42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/08 12:20:56 by masase            #+#    #+#             */
-/*   Updated: 2024/11/14 16:59:54 by maw              ###   ########.fr       */
+/*   Updated: 2024/11/14 19:45:38 by maw              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -100,10 +100,17 @@ void	ft_lstadd_back_bis(t_lista **lst, t_lista *new)
 	new->next = NULL;
 }
 
-// int	main(void)
-// {
-//     t_list	*node = ft_lstnew(malloc(10)); // Création d'un nœud avec du contenu dynamique
+int	ft_lstsize_bis(t_lista *lst)
+{
+	int		i;
+	t_lista	*temp;
 
-//     ft_lstdelone(node, ft_free_content);   // Suppression du nœud avec ft_lstdelone
-//     return (0);
-// }
+	temp = lst;
+	i = 0;
+	while (temp)
+	{
+		temp = temp->next;
+		i++;
+	}
+	return (i);
+}

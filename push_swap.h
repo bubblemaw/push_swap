@@ -6,7 +6,7 @@
 /*   By: maw <maw@student.42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/04 17:11:15 by masase            #+#    #+#             */
-/*   Updated: 2024/11/14 17:53:45 by maw              ###   ########.fr       */
+/*   Updated: 2024/11/14 18:43:45 by maw              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,8 +30,9 @@ void			ft_lstadd_back_bis(t_lista **lst, t_lista *new);
 t_lista			*ft_lstlast_bis(t_lista *lst);
 void			deletenod_last(t_lista *nod);
 void			deletenod(t_lista **nod);
+int				ft_lstsize_bis(t_lista *lst);
 
-int				countworda(const char *str, char c);
+int				countwords(const char *str, char c);
 int				checkdouble_checknbmax(t_lista **lst);
 int				twoargmanager(char *str, t_lista **lst);
 int				argmanager(t_lista **lst, int arg, char **argv);
@@ -52,5 +53,7 @@ int				reverse_rotate_b(t_lista **stack_b);
 int				double_swap(t_lista **stack_a, t_lista **stack_b);
 int				double_rotate(t_lista **stack_a, t_lista **stack_b);
 int				double_reverse_rotate(t_lista **stack_a, t_lista **stack_b);
+
+int				push_from_a_to_b(t_lista **stack_a, t_lista **stack_b);
 
 #endif

@@ -6,7 +6,7 @@
 /*   By: maw <maw@student.42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/04 17:35:04 by masase            #+#    #+#             */
-/*   Updated: 2024/11/14 17:53:04 by maw              ###   ########.fr       */
+/*   Updated: 2024/11/14 18:37:20 by maw              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,10 +34,10 @@ void	printlist(t_lista *lst)
 int	main(int argc, char **argv)
 {
 	t_lista	*stack_a;
-	// t_lista	*stack_b;
+	t_lista	*stack_b;
 
 	stack_a = NULL;
-	// stack_b = NULL;
+	stack_b = NULL;
 	if (argc < 2)
 		return (0);
 	else if (argc == 2 && twoargmanager(argv[1], &stack_a) == 0)
@@ -46,18 +46,11 @@ int	main(int argc, char **argv)
 		return (error());
 	if (checkdouble_checknbmax(&stack_a) == 0)
 		return (error());
-	// printlist(stack_a);
-	// printlist(stack_b);
-	// swap_a(&stack_a);
-	// push_b(&stack_a, &stack_b);
-	// push_b(&stack_a, &stack_b);
-	// push_b(&stack_a, &stack_b);
-	// push_b(&stack_a, &stack_b);
-	// printlist(stack_a);
-	// printlist(stack_b);
-	// double_reverse_rotate(&stack_a, &stack_b);
-	// printlist(stack_a);
-	// printlist(stack_b);
+	printlist(stack_a);
+	printlist(stack_b);
+	push_from_a_to_b(&stack_a, &stack_b);
+	printlist(stack_a);
+	printlist(stack_b);
 	return (0);
 }
 
