@@ -6,7 +6,7 @@
 /*   By: masase <masase@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/08 14:38:40 by masase            #+#    #+#             */
-/*   Updated: 2024/11/10 17:46:32 by masase           ###   ########.fr       */
+/*   Updated: 2024/11/17 20:43:53 by masase           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,3 +43,14 @@ long int	ft_atoi_swap(const char *str)
 	}
 	return (resultat * signe);
 }
+
+// int	is_sorted(t_lista **stack_a)
+// {
+// 	int	i;
+
+// 	i = ;
+// 	while (*stack_a)
+// 	{
+		
+// 	}
+// }

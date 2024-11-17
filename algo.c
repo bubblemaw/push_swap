@@ -6,7 +6,7 @@
 /*   By: masase <masase@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/11 15:47:32 by masase            #+#    #+#             */
-/*   Updated: 2024/11/15 16:54:07 by masase           ###   ########.fr       */
+/*   Updated: 2024/11/17 21:03:54 by masase           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -83,25 +83,27 @@ int	push_above_max(t_lista **stack_a, t_lista **stack_b)
 	push_b(stack_a, stack_b);
 	return (1);
 }
+
 int	pushmiddle(t_lista **stack_a, t_lista **stack_b)
 {
-	int	price;
-	int	i;
-	int	maxrotate;
+	t_lista	*temp;
+	int		price;
+	long int		nb;
 
-	maxrotate = (ft_lstsize_bis(*stack_b) / 2);
-	i = 0;
+	temp = *stack_b;
+	nb = (*stack_b)->nb;
 	price = 0;
-	while (i < maxrotate)
+	printf("%ld\n", temp->nb);
+	printf("%ld\n", (*stack_a)->nb);
+	while (temp)
 	{
-		if ((*stack_a)->nb < (*stack_b)->nb)
-		{
-			price += push_b(stack_a, stack_b);
-			return (price);
-		}
-		i++;
-		price += rotate_b(stack_b);
+		if ((*stack_a)->nb < temp->nb && (*stack_a)->nb > temp->prev->nb)
+			nb = temp->nb;
+		temp = temp->next;
 	}
+	while ((*stack_b)->nb != nb)
+		price += rotate_b(stack_b);
+	price += push_b(stack_a, stack_b);
 	return (price);
 }
 int	push_from_a_to_b(t_lista **stack_a, t_lista **stack_b)
@@ -109,42 +111,64 @@ int	push_from_a_to_b(t_lista **stack_a, t_lista **stack_b)
 	int	price;
 
 	price = 0;
-	// price += push_above_max(stack_a, stack_b);
-	// printlist(*stack_a);
-	// printlist(*stack_b);
-		if (newmax(stack_a, stack_b) == 1)
-			price += push_above_max(stack_a, stack_b);
-		else if (newmin(stack_a, stack_b) == 1)
-			price += push_above_max(stack_a, stack_b);
-		else
-			price += pushmiddle(stack_a, stack_b);
+	if (newmax(stack_a, stack_b) == 1 || newmin(stack_a, stack_b) == 1)
+	{
+		price += push_above_max(stack_a, stack_b);
+		printf("new min ou new max\n");
+	}
+	else
+	{
+		price += pushmiddle(stack_a, stack_b);
+		printf("on pousse au millieu\n");
+	}
 	return (price);
 }
 
 int	ilfautledire(t_lista **stack_a, t_lista **stack_b)
 {
-	t_lista *copy_a;
-	t_lista *copy_b;
+	t_lista *copy_a = NULL;
+	t_lista *copy_b = NULL;
 	int		price;
 	int		bestprice;
-	int		nb;
+	int		nbbase;
 	int		bestnb;
 
 	copy_a = ft_lst_copy(stack_a);
 	copy_b = ft_lst_copy(stack_b);
-	while (copy_a)
+	bestprice = push_from_a_to_b(&copy_a, &copy_b);
+	nbbase = (*stack_a)->nb;
+	bestnb = (*stack_a)->nb;
+	ft_lstclear_bis(&copy_a);
+	ft_lstclear_bis(&copy_b);
+	rotate_a(stack_a);
+	while ((*stack_a)->nb != nbbase)
 	{
+		copy_a = ft_lst_copy(stack_a);
+		copy_b = ft_lst_copy(stack_b);
 		price = push_from_a_to_b(&copy_a, &copy_b);
-		nb = copy_a->nb;
 		if (price < bestprice)
 		{
 			bestprice = price;
-			bestnb = nb;
+			bestnb = (*stack_a)->nb;
 		}
-		copy_a = copy_a->next;
+		ft_lstclear_bis(&copy_a);
+		ft_lstclear_bis(&copy_b);
+		rotate_a(stack_a);
 	}
-	ft_lstclear_bis(&copy_a);
-	ft_lstclear_bis(&copy_b);
-	return (bestnb);// la j'ai le meilleure nombre a envoyer dans la colonne b je dois donc iteter dans la co
-					// dans la colonne A pour le trouver et l'envoyer dans la colonne_B
+	return (bestnb);
+
+}
+int	lookfornb(int bestnb, t_lista **stack_a)
+{
+	int		price;
+
+	price = 0;
+	while(*stack_a)
+	{
+		if (bestnb == (*stack_a)->nb)
+			return (price);
+		price += rotate_a(stack_a);
+	}
+	return (0);
+
 }

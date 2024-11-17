@@ -6,7 +6,7 @@
 /*   By: masase <masase@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/04 17:11:15 by masase            #+#    #+#             */
-/*   Updated: 2024/11/15 16:45:17 by masase           ###   ########.fr       */
+/*   Updated: 2024/11/17 14:01:49 by masase           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -56,5 +56,7 @@ int				double_rotate(t_lista **stack_a, t_lista **stack_b);
 int				double_reverse_rotate(t_lista **stack_a, t_lista **stack_b);
 
 int				push_from_a_to_b(t_lista **stack_a, t_lista **stack_b);
+int				lookfornb(int bestnb, t_lista **stack_a);
+int				ilfautledire(t_lista **stack_a, t_lista **stack_b);
 
 #endif
