@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   arg_manager.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: maw <maw@student.42.fr>                    +#+  +:+       +#+        */
+/*   By: masase <masase@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/14 17:40:29 by maw               #+#    #+#             */
-/*   Updated: 2024/11/14 18:39:34 by maw              ###   ########.fr       */
+/*   Updated: 2024/11/18 16:02:48 by masase           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,23 +18,27 @@ int	checkdouble_checknbmax(t_lista **lst)
 	t_lista	*current;
 
 	current = *lst;
-	while (current)
+	while (1)
 	{
 		temp = current->next;
-		while (temp)
+		while (temp != *lst)
 		{
 			if (temp->nb == current->nb)
 				return (0);
 			temp = temp->next;
 		}
 		current = current->next;
+		if (current == *lst)
+			break ;
 	}
 	current = *lst;
-	while (current)
+	while (1)
 	{
 		if (current->nb < -2147483648 || current->nb > 2147483647)
 			return (0);
 		current = current->next;
+		if (current == *lst)
+			break ;
 	}
 	return (1);
 }

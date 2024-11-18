@@ -6,7 +6,7 @@
 /*   By: masase <masase@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/11 15:47:32 by masase            #+#    #+#             */
-/*   Updated: 2024/11/17 21:03:54 by masase           ###   ########.fr       */
+/*   Updated: 2024/11/18 17:55:04 by masase           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,11 +38,13 @@ int	newmax(t_lista **stack_a, t_lista **stack_b)
 	t_lista	*temp;
 
 	temp = *stack_b;
-	while (temp)
+	while (1)
 	{
 		if ((temp)->nb > (*stack_a)->nb)
 			return (0);
 		temp = temp->next;
+		if (temp == *stack_b)
+			break ;
 	}
 	return (1);
 }
@@ -52,11 +54,13 @@ int	newmin(t_lista **stack_a, t_lista **stack_b)
 	t_lista	*temp;
 
 	temp = *stack_b;
-	while (temp)
+	while (1)
 	{
 		if ((temp)->nb < (*stack_a)->nb)
 			return (0);
 		temp = temp->next;
+		if (temp == *stack_b)
+			break ;
 	}
 	return (1);
 }
@@ -68,11 +72,13 @@ int	push_above_max(t_lista **stack_a, t_lista **stack_b)
 
 	temp = *stack_b;
 	nb = 0;
-	while (temp)
+	while (1)
 	{
 		if (temp->nb > nb)
 			nb = temp->nb;
 		temp = temp->next;
+		if (temp == *stack_b)
+			break ;
 	}
 	while (*stack_b)
 	{
@@ -86,20 +92,20 @@ int	push_above_max(t_lista **stack_a, t_lista **stack_b)
 
 int	pushmiddle(t_lista **stack_a, t_lista **stack_b)
 {
-	t_lista	*temp;
-	int		price;
+	t_lista			*temp;
+	int				price;
 	long int		nb;
 
 	temp = *stack_b;
 	nb = (*stack_b)->nb;
 	price = 0;
-	printf("%ld\n", temp->nb);
-	printf("%ld\n", (*stack_a)->nb);
-	while (temp)
+	while (1)
 	{
 		if ((*stack_a)->nb < temp->nb && (*stack_a)->nb > temp->prev->nb)
 			nb = temp->nb;
 		temp = temp->next;
+		if (temp == *stack_b)
+			break ;
 	}
 	while ((*stack_b)->nb != nb)
 		price += rotate_b(stack_b);

@@ -6,7 +6,7 @@
 /*   By: masase <masase@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/04 17:35:04 by masase            #+#    #+#             */
-/*   Updated: 2024/11/17 18:59:58 by masase           ###   ########.fr       */
+/*   Updated: 2024/11/18 16:12:25 by masase           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,12 +23,22 @@ ALGORITHME
 
 void	printlist(t_lista *lst)
 {
-	while (lst)
+	t_lista	*first;
+
+	if (!lst)
+	{
+		printf("NULL\n");
+		return ;
+	}
+	first = lst;
+	while (1)
 	{
 		printf("%ld ->", lst->nb);
 		lst = lst->next;
+		if (lst == first)
+			break ;
 	}
-	printf("NULL\n");
+	printf("\n");
 }
 
 int	main(int argc, char **argv)
