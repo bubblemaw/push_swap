@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   listmanager.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: masase <masase@student.42.fr>              +#+  +:+       +#+        */
+/*   By: maw <maw@student.42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/08 12:20:56 by masase            #+#    #+#             */
-/*   Updated: 2024/11/18 16:22:09 by masase           ###   ########.fr       */
+/*   Updated: 2024/11/19 15:58:25 by maw              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -51,12 +51,9 @@ t_lista	*ft_lstnew_bis(long int nb)
 void	ft_lstclear_bis(t_lista **lst)
 {
 	t_lista	*temp;
-	t_lista	*start;
 
 	if (!lst || !*lst)
 		return ;
-
-	start = *lst;
 	(*lst)->prev->next = NULL;
 	while (*lst)
 	{
@@ -141,9 +138,11 @@ int	ft_lstsize_bis(t_lista *lst)
 
 	temp = lst;
 	i = 0;
-	while (temp)
+	while (1)
 	{
 		temp = temp->next;
+		if (temp == lst)
+			break ;
 		i++;
 	}
 	return (i);

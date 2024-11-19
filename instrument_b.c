@@ -6,7 +6,7 @@
 /*   By: maw <maw@student.42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/14 17:02:50 by maw               #+#    #+#             */
-/*   Updated: 2024/11/14 17:30:48 by maw              ###   ########.fr       */
+/*   Updated: 2024/11/19 15:36:13 by maw              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,22 +38,28 @@ int	push_b(t_lista **stack_a, t_lista **stack_b)
 
 int	rotate_b(t_lista **stack_b)
 {
-	t_lista	*temp;
-
-	temp = ft_lstnew_bis((*stack_b)->nb);
-	ft_lstadd_back_bis(stack_b, temp);
-	deletenod(stack_b);
+	if (!stack_b || !*stack_b || (*stack_b)->next == *stack_b)
+		return (0);
+	*stack_b = (*stack_b)->next;
 	return (1);
 }
 
 int	reverse_rotate_b(t_lista **stack_b)
 {
 	t_lista	*last;
-	t_lista	*temp;
 
-	last = ft_lstlast_bis(*stack_b);
-	temp = ft_lstnew_bis(last->nb);
-	ft_lstadd_front_bis(stack_b, temp);
-	deletenod_last(last);
+	if (!stack_b || !*stack_b || (*stack_b)->next == *stack_b)
+		return (0); 
+	last = (*stack_b)->prev;
+
+	last->prev->next = *stack_b;
+	(*stack_b)->prev = last->prev;
+
+	last->next = *stack_b;
+	last->prev = (*stack_b)->prev;
+	(*stack_b)->prev->next = last;
+	(*stack_b)->prev = last;
+	*stack_b = last;
 	return (1);
 }
+

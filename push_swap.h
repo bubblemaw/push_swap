@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   push_swap.h                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: masase <masase@student.42.fr>              +#+  +:+       +#+        */
+/*   By: maw <maw@student.42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/04 17:11:15 by masase            #+#    #+#             */
-/*   Updated: 2024/11/18 16:38:56 by masase           ###   ########.fr       */
+/*   Updated: 2024/11/19 17:17:39 by maw              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -58,5 +58,8 @@ int				double_reverse_rotate(t_lista **stack_a, t_lista **stack_b);
 int				push_from_a_to_b(t_lista **stack_a, t_lista **stack_b);
 int				lookfornb(int bestnb, t_lista **stack_a);
 int				ilfautledire(t_lista **stack_a, t_lista **stack_b);
+int				checkifsorted(t_lista **lst);
+int				tri_trois(t_lista **stack_a);
+int				getmin(t_lista **stack_b);
 
 #endif

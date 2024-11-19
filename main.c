@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   main.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: masase <masase@student.42.fr>              +#+  +:+       +#+        */
+/*   By: maw <maw@student.42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/04 17:35:04 by masase            #+#    #+#             */
-/*   Updated: 2024/11/18 16:12:25 by masase           ###   ########.fr       */
+/*   Updated: 2024/11/19 17:23:51 by maw              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -47,8 +47,6 @@ int	main(int argc, char **argv)
 	t_lista	*stack_b;
 	int		bestnb;
 
-	int i = 0;
-
 	stack_a = NULL;
 	stack_b = NULL;
 	if (argc < 2)
@@ -67,7 +65,7 @@ int	main(int argc, char **argv)
 	printf("liste apres deux premier push\n");
 	printlist(stack_a);
 	printlist(stack_b);
-	while (stack_a)
+	while (ft_lstsize_bis(stack_a) >= 3)
 	{
 		bestnb = ilfautledire(&stack_a, &stack_b);
 		printf("%d est le meilleure numero a pousse\n ", bestnb);
@@ -79,8 +77,18 @@ int	main(int argc, char **argv)
 		printf("LISTE APRES PUSH\n");
 		printlist(stack_a);
 		printlist(stack_b);
-		i++;
 	}
+	printlist(stack_a);
+	printlist(stack_b);
+	tri_trois(&stack_a);
+	bestnb = getmin(&stack_b);
+	lookfornb(bestnb, &stack_a);
+
+
+	/*faire un tri quand il en reste plus que trois
+	un truc qui check si les trois sont dans l'odre 
+	mettre le nombre minimum le plus a droite de la liste possible 
+	*/
 	printlist(stack_a);
 	printlist(stack_b);
 	return (0);

@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   algo.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: masase <masase@student.42.fr>              +#+  +:+       +#+        */
+/*   By: maw <maw@student.42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/11 15:47:32 by masase            #+#    #+#             */
-/*   Updated: 2024/11/18 17:55:04 by masase           ###   ########.fr       */
+/*   Updated: 2024/11/19 17:16:41 by maw              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -101,7 +101,7 @@ int	pushmiddle(t_lista **stack_a, t_lista **stack_b)
 	price = 0;
 	while (1)
 	{
-		if ((*stack_a)->nb < temp->nb && (*stack_a)->nb > temp->prev->nb)
+		if ((*stack_a)->nb > temp->nb && (*stack_a)->nb < temp->prev->nb)
 			nb = temp->nb;
 		temp = temp->next;
 		if (temp == *stack_b)
@@ -177,4 +177,84 @@ int	lookfornb(int bestnb, t_lista **stack_a)
 	}
 	return (0);
 
+}
+
+int checkifsorted(t_lista **lst)
+{
+	int	nb;
+
+	nb = (*lst)->nb;
+	*lst = (*lst)->next;
+	while (*lst)
+	{
+		if (nb == (*lst)->nb)
+			break ;
+		if (nb < (*lst)->nb)
+			return (0);
+		nb = (*lst)->nb;
+		*lst = (*lst)->next;
+	}
+	return (1);
+}
+int tri_trois(t_lista **stack_a)
+{
+    int price = 0;
+
+    // Si la pile est déjà triée (ordre croissant)
+    if ((*stack_a)->nb < (*stack_a)->next->nb && (*stack_a)->next->nb < (*stack_a)->prev->nb)
+    {
+        printf("on doit rien faire\n");
+        return (price);
+    }
+    // Si la pile est triée dans l'ordre décroissant
+    else if ((*stack_a)->nb > (*stack_a)->next->nb && (*stack_a)->next->nb > (*stack_a)->prev->nb)
+    {
+        printf("on doit faire un swap et un reverse rotate\n");
+        price += swap_a(stack_a);
+        price += reverse_rotate_a(stack_a);
+    }
+    // Si le premier élément est le plus grand et le dernier le plus petit
+    else if ((*stack_a)->nb > (*stack_a)->prev->nb && (*stack_a)->prev->nb > (*stack_a)->next->nb)
+    {
+        printf("on doit faire un swap\n");
+        price += swap_a(stack_a);
+    }
+    // Si le deuxième élément est le plus grand
+    else if ((*stack_a)->next->nb > (*stack_a)->nb && (*stack_a)->nb > (*stack_a)->prev->nb)
+    {
+        printf("on doit faire un reverse rotate\n");
+        price += reverse_rotate_a(stack_a);
+    }
+    // Si le dernier élément est le plus grand
+    else if ((*stack_a)->next->nb > (*stack_a)->prev->nb && (*stack_a)->prev->nb > (*stack_a)->nb)
+    {
+        printf("on doit faire un rotate\n");
+        price += rotate_a(stack_a);
+    }
+    // Si le premier élément est le milieu
+    else if ((*stack_a)->prev->nb > (*stack_a)->nb && (*stack_a)->nb > (*stack_a)->next->nb)
+    {
+        printf("on doit faire un swap et un rotate\n");
+        price += swap_a(stack_a);
+        price += rotate_a(stack_a);
+    }
+    return (price);
+}
+
+int	getmin(t_lista **stack_b)
+{
+	t_lista	*temp;
+	int		nb;
+
+	temp = *stack_b;
+	nb = temp->nb;
+	while (1)
+	{
+		if ((temp)->nb < nb)
+			nb = temp->nb;
+		temp = temp->next;
+		if (temp == *stack_b)
+			break ;
+	}
+	return (nb);
 }
