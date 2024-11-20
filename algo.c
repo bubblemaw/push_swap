@@ -6,7 +6,7 @@
 /*   By: maw <maw@student.42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/11 15:47:32 by masase            #+#    #+#             */
-/*   Updated: 2024/11/19 17:16:41 by maw              ###   ########.fr       */
+/*   Updated: 2024/11/20 17:57:03 by maw              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -130,6 +130,34 @@ int	push_from_a_to_b(t_lista **stack_a, t_lista **stack_b)
 	return (price);
 }
 
+int	push_from_b_to_a(t_lista **stack_a, t_lista **stack_b)
+{
+	int	price;
+	int	nb;
+
+	price = 0;
+	if (newmax(stack_b, stack_a) == 1)
+	{
+		nb = getmin(stack_a);
+		lookfornb_a(nb, stack_a);
+		price += push_a(stack_a, stack_b);
+		printf("new max\n");
+	}
+	else if (newmin(stack_b, stack_a) == 1)
+	{
+		nb = getmin(stack_a);
+		lookfornb_a(nb, stack_a);
+		price += push_a(stack_a, stack_b);
+		printf("new min\n");
+	}
+	else
+	{
+		price += pushmiddle_bis(stack_a, stack_b);
+		printf("on pousse au millieu\n");
+	}
+	return (price);
+}
+
 int	ilfautledire(t_lista **stack_a, t_lista **stack_b)
 {
 	t_lista *copy_a = NULL;
@@ -162,21 +190,74 @@ int	ilfautledire(t_lista **stack_a, t_lista **stack_b)
 		rotate_a(stack_a);
 	}
 	return (bestnb);
-
 }
-int	lookfornb(int bestnb, t_lista **stack_a)
+int	searchnb(t_lista **lst, int nb)
+{
+	t_lista	*current;
+	int		i;
+
+	i = 0;
+	current = *lst;
+	while (1)
+	{
+		current = current->next;
+		i++;
+		if (nb == current->nb)
+			return (i);
+		if (current == *lst)
+			break ;
+	}
+	return (i);
+}
+
+int	lookfornb_a(int bestnb, t_lista **stack_a)
 {
 	int		price;
+	int		i;
+	int		size;
 
+	size = ft_lstsize_bis(*stack_a);
 	price = 0;
-	while(*stack_a)
+	if ((*stack_a)->next->nb == bestnb)
+		return (price += swap_a(stack_a));
+	i = searchnb(stack_a, bestnb);
+	if (i <= size / 2)
 	{
-		if (bestnb == (*stack_a)->nb)
-			return (price);
-		price += rotate_a(stack_a);
+		while ((*stack_a)->nb != bestnb)
+			price += rotate_a(stack_a);
 	}
-	return (0);
+	else
+	{
+		i = size - i;
+		while ((*stack_a)->nb != bestnb)
+			price += reverse_rotate_a(stack_a);
+	}
+	return (price);
+}
 
+int	lookfornb_b(int bestnb, t_lista **stack_b)
+{
+	int		price;
+	int		i;
+	int		size;
+
+	size = ft_lstsize_bis(*stack_b);
+	price = 0;
+	if ((*stack_b)->next->nb == bestnb)
+		return (price += swap_b(stack_b));
+	i = searchnb(stack_b, bestnb);
+	if (i <= size / 2)
+	{
+		while ((*stack_b)->nb != bestnb)
+			price += rotate_b(stack_b);
+	}
+	else
+	{
+		i = size - i;
+		while ((*stack_b)->nb != bestnb)
+			price += reverse_rotate_a(stack_b);
+	}
+	return (price);
 }
 
 int checkifsorted(t_lista **lst)
@@ -200,47 +281,54 @@ int tri_trois(t_lista **stack_a)
 {
     int price = 0;
 
-    // Si la pile est déjà triée (ordre croissant)
     if ((*stack_a)->nb < (*stack_a)->next->nb && (*stack_a)->next->nb < (*stack_a)->prev->nb)
     {
         printf("on doit rien faire\n");
         return (price);
     }
-    // Si la pile est triée dans l'ordre décroissant
     else if ((*stack_a)->nb > (*stack_a)->next->nb && (*stack_a)->next->nb > (*stack_a)->prev->nb)
     {
-        printf("on doit faire un swap et un reverse rotate\n");
-        price += swap_a(stack_a);
         price += reverse_rotate_a(stack_a);
     }
-    // Si le premier élément est le plus grand et le dernier le plus petit
     else if ((*stack_a)->nb > (*stack_a)->prev->nb && (*stack_a)->prev->nb > (*stack_a)->next->nb)
     {
-        printf("on doit faire un swap\n");
-        price += swap_a(stack_a);
+        price += rotate_a(stack_a);
     }
-    // Si le deuxième élément est le plus grand
     else if ((*stack_a)->next->nb > (*stack_a)->nb && (*stack_a)->nb > (*stack_a)->prev->nb)
     {
         printf("on doit faire un reverse rotate\n");
         price += reverse_rotate_a(stack_a);
     }
-    // Si le dernier élément est le plus grand
     else if ((*stack_a)->next->nb > (*stack_a)->prev->nb && (*stack_a)->prev->nb > (*stack_a)->nb)
     {
         printf("on doit faire un rotate\n");
-        price += rotate_a(stack_a);
+        price += reverse_rotate_a(stack_a);
+		price += swap_a(stack_a);
     }
-    // Si le premier élément est le milieu
     else if ((*stack_a)->prev->nb > (*stack_a)->nb && (*stack_a)->nb > (*stack_a)->next->nb)
     {
-        printf("on doit faire un swap et un rotate\n");
         price += swap_a(stack_a);
-        price += rotate_a(stack_a);
     }
     return (price);
 }
 
+int	getmax(t_lista **stack_b)
+{
+	t_lista	*temp;
+	int		nb;
+
+	temp = *stack_b;
+	nb = temp->nb;
+	while (1)
+	{
+		if ((temp)->nb > nb)
+			nb = temp->nb;
+		temp = temp->next;
+		if (temp == *stack_b)
+			break ;
+	}
+	return (nb);
+}
 int	getmin(t_lista **stack_b)
 {
 	t_lista	*temp;
@@ -257,4 +345,27 @@ int	getmin(t_lista **stack_b)
 			break ;
 	}
 	return (nb);
+}
+
+int	pushmiddle_bis(t_lista **stack_a, t_lista **stack_b)
+{
+	t_lista			*temp;
+	int				price;
+	long int		nb;
+
+	temp = *stack_a;
+	nb = (*stack_a)->nb;
+	price = 0;
+	while (1)
+	{
+		if ((*stack_b)->nb < temp->nb && (*stack_b)->nb > temp->prev->nb)
+			nb = temp->nb;
+		temp = temp->next;
+		if (temp == *stack_a)
+			break ;
+	}
+	while ((*stack_a)->nb != nb)
+		price += rotate_a(stack_a);
+	price += push_a(stack_a, stack_b);
+	return (price);
 }

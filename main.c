@@ -6,7 +6,7 @@
 /*   By: maw <maw@student.42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/04 17:35:04 by masase            #+#    #+#             */
-/*   Updated: 2024/11/19 17:23:51 by maw              ###   ########.fr       */
+/*   Updated: 2024/11/20 17:57:12 by maw              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -69,7 +69,7 @@ int	main(int argc, char **argv)
 	{
 		bestnb = ilfautledire(&stack_a, &stack_b);
 		printf("%d est le meilleure numero a pousse\n ", bestnb);
-		lookfornb(bestnb, &stack_a);
+		lookfornb_a(bestnb, &stack_a);
 		printf("je modifie les liste pour push le bon nb\n");
 		printlist(stack_a);
 		printlist(stack_b);
@@ -78,17 +78,15 @@ int	main(int argc, char **argv)
 		printlist(stack_a);
 		printlist(stack_b);
 	}
+	tri_trois(&stack_a);
+	printf("LISTE APRES TRIS TROIS\n");
 	printlist(stack_a);
 	printlist(stack_b);
-	tri_trois(&stack_a);
-	bestnb = getmin(&stack_b);
-	lookfornb(bestnb, &stack_a);
-
-
-	/*faire un tri quand il en reste plus que trois
-	un truc qui check si les trois sont dans l'odre 
-	mettre le nombre minimum le plus a droite de la liste possible 
-	*/
+	while (stack_b)
+		push_from_b_to_a(&stack_a, &stack_b);
+	bestnb = getmin(&stack_a);
+	printf("%d\n", bestnb);
+	lookfornb_a(bestnb, &stack_a);
 	printlist(stack_a);
 	printlist(stack_b);
 	return (0);

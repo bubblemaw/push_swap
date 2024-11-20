@@ -6,7 +6,7 @@
 /*   By: maw <maw@student.42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/04 17:11:15 by masase            #+#    #+#             */
-/*   Updated: 2024/11/19 17:17:39 by maw              ###   ########.fr       */
+/*   Updated: 2024/11/20 17:08:48 by maw              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -56,10 +56,15 @@ int				double_rotate(t_lista **stack_a, t_lista **stack_b);
 int				double_reverse_rotate(t_lista **stack_a, t_lista **stack_b);
 
 int				push_from_a_to_b(t_lista **stack_a, t_lista **stack_b);
-int				lookfornb(int bestnb, t_lista **stack_a);
+int				lookfornb_a(int bestnb, t_lista **stack_a);
+int				lookfornb_b(int bestnb, t_lista **stack_b);
 int				ilfautledire(t_lista **stack_a, t_lista **stack_b);
 int				checkifsorted(t_lista **lst);
 int				tri_trois(t_lista **stack_a);
+int				getmax(t_lista **stack_b);
 int				getmin(t_lista **stack_b);
+int				push_from_b_to_a(t_lista **stack_a, t_lista **stack_b);
+int				pushmiddle_bis(t_lista **stack_a, t_lista **stack_b);
+int				searchnb(t_lista **lst, int nb);
 
 #endif
