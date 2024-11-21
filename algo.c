@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   algo.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: maw <maw@student.42.fr>                    +#+  +:+       +#+        */
+/*   By: masase <masase@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/11 15:47:32 by masase            #+#    #+#             */
-/*   Updated: 2024/11/20 20:07:58 by maw              ###   ########.fr       */
+/*   Updated: 2024/11/21 16:56:48 by masase           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -120,12 +120,12 @@ int	push_from_a_to_b(t_lista **stack_a, t_lista **stack_b, int x)
 	if (newmax(stack_a, stack_b) == 1 || newmin(stack_a, stack_b) == 1)
 	{
 		price += push_above_max(stack_a, stack_b, x);
-		printf("new min ou new max\n");
+		// printf("new min ou new max\n");
 	}
 	else
 	{
 		price += pushmiddle(stack_a, stack_b, x);
-		printf("on pousse au millieu\n");
+		// printf("on pousse au millieu\n");
 	}
 	return (price);
 }
@@ -141,19 +141,19 @@ int	push_from_b_to_a(t_lista **stack_a, t_lista **stack_b, int x)
 		nb = getmin(stack_a);
 		lookfornb_a(nb, stack_a, x);
 		price += push_a(stack_a, stack_b, x);
-		printf("new max\n");
+		// printf("new max\n");
 	}
 	else if (newmin(stack_b, stack_a) == 1)
 	{
 		nb = getmin(stack_a);
 		lookfornb_a(nb, stack_a, x);
 		price += push_a(stack_a, stack_b, x);
-		printf("new min\n");
+		// printf("new min\n");
 	}
 	else
 	{
 		price += pushmiddle_bis(stack_a, stack_b, x);
-		printf("on pousse au millieu\n");
+		// printf("on pousse au millieu\n");
 	}
 	return (price);
 }

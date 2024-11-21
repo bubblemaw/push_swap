@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   main.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: maw <maw@student.42.fr>                    +#+  +:+       +#+        */
+/*   By: masase <masase@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/04 17:35:04 by masase            #+#    #+#             */
-/*   Updated: 2024/11/21 16:22:36 by maw              ###   ########.fr       */
+/*   Updated: 2024/11/21 16:56:51 by masase           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -63,32 +63,32 @@ int	main(int argc, char **argv)
 	printlist(stack_b);
 	push_b(&stack_a, &stack_b, x);
 	push_b(&stack_a, &stack_b, x);
-	printf("liste apres deux premier push\n");
+	// printf("liste apres deux premier push\n");
 	printlist(stack_a);
 	printlist(stack_b);
 	while (ft_lstsize_bis(stack_a) >= 3)
 	{
 		x = 0;
 		bestnb = ilfautledire(&stack_a, &stack_b, x);
-		printf("%d est le meilleure numero a pousse\n ", bestnb);
+		// printf("%d est le meilleure numero a pousse\n ", bestnb);
 		x = 1;
 		lookfornb_a(bestnb, &stack_a, x);
-		printf("je modifie les liste pour push le bon nb\n");
-		printlist(stack_a);
-		printlist(stack_b);
+		// printf("je modifie les liste pour push le bon nb\n");
+		// printlist(stack_a);
+		// printlist(stack_b);
 		push_from_a_to_b(&stack_a, &stack_b, x);
-		printf("LISTE APRES PUSH\n");
-		printlist(stack_a);
-		printlist(stack_b);
+		// printf("LISTE APRES PUSH\n");
+		// printlist(stack_a);
+		// printlist(stack_b);
 	}
 	tri_trois(&stack_a, x);
-	printf("LISTE APRES TRIS TROIS\n");
-	printlist(stack_a);
-	printlist(stack_b);
+	// printf("LISTE APRES TRIS TROIS\n");
+	// printlist(stack_a);
+	// printlist(stack_b);
 	while (stack_b)
 		push_from_b_to_a(&stack_a, &stack_b, x);
 	bestnb = getmin(&stack_a);
-	printf("%d\n", bestnb);
+	// printf("%d\n", bestnb);
 	lookfornb_a(bestnb, &stack_a, x);
 	printlist(stack_a);
 	printlist(stack_b);

@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   instrument_a.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: maw <maw@student.42.fr>                    +#+  +:+       +#+        */
+/*   By: masase <masase@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/10 17:59:32 by masase            #+#    #+#             */
-/*   Updated: 2024/11/20 20:11:14 by maw              ###   ########.fr       */
+/*   Updated: 2024/11/21 16:46:42 by masase           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,8 +24,11 @@ int	swap_a(t_lista **stack_a, int x)
 	current_a->nb = current_b->nb;
 	current_b->nb = nb;
 	if (x == 1)
+	{
 		write(1, "sa\n", 3);
-	return (1);
+		return (1);
+	}
+	return (0);
 }
 
 int	push_a(t_lista **stack_a, t_lista **stack_b, int x)
@@ -36,8 +39,11 @@ int	push_a(t_lista **stack_a, t_lista **stack_b, int x)
 	ft_lstadd_front_bis(stack_a, temp);
 	deletenod(stack_b);
 	if (x == 1)
+	{
 		write(1, "pa\n", 3);
-	return (1);
+		return (1);
+	}
+	return (0);
 }
 
 int	rotate_a(t_lista **stack_a, int x)
@@ -46,8 +52,11 @@ int	rotate_a(t_lista **stack_a, int x)
 		return (0);
 	*stack_a = (*stack_a)->next;
 	if (x == 1)
+	{
 		write(1, "ra\n", 3);
-	return (1);
+		return (1);
+	}
+	return (0);
 }
 
 int	reverse_rotate_a(t_lista **stack_a, int x)
@@ -67,6 +76,9 @@ int	reverse_rotate_a(t_lista **stack_a, int x)
 	(*stack_a)->prev = last;
 	*stack_a = last;
 	if (x == 1)
+	{
 		write(1, "rra\n", 4);
-	return (1);
+		return (1);
+	}
+	return (0);
 }
