@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   algo.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: masase <masase@student.42.fr>              +#+  +:+       +#+        */
+/*   By: maw <maw@student.42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/11 15:47:32 by masase            #+#    #+#             */
-/*   Updated: 2024/11/21 16:56:48 by masase           ###   ########.fr       */
+/*   Updated: 2024/11/22 17:54:33 by maw              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -68,10 +68,12 @@ int	newmin(t_lista **stack_a, t_lista **stack_b)
 int	push_above_max(t_lista **stack_a, t_lista **stack_b, int x)
 {
 	int		nb;
+	int		price;
 	t_lista	*temp;
 
 	temp = *stack_b;
 	nb = 0;
+	price = 0;
 	while (1)
 	{
 		if (temp->nb > nb)
@@ -84,10 +86,10 @@ int	push_above_max(t_lista **stack_a, t_lista **stack_b, int x)
 	{
 		if ((*stack_b)->nb == nb)
 			break ;
-		rotate_b(stack_b, x);
+		price += rotate_b(stack_b, x);
 	}
-	push_b(stack_a, stack_b, x);
-	return (1);
+	price += push_b(stack_a, stack_b, x);
+	return (price);
 }
 
 int	pushmiddle(t_lista **stack_a, t_lista **stack_b, int x)
@@ -139,14 +141,14 @@ int	push_from_b_to_a(t_lista **stack_a, t_lista **stack_b, int x)
 	if (newmax(stack_b, stack_a) == 1)
 	{
 		nb = getmin(stack_a);
-		lookfornb_a(nb, stack_a, x);
+		price += lookfornb_a(nb, stack_a, x);
 		price += push_a(stack_a, stack_b, x);
 		// printf("new max\n");
 	}
 	else if (newmin(stack_b, stack_a) == 1)
 	{
 		nb = getmin(stack_a);
-		lookfornb_a(nb, stack_a, x);
+		price += lookfornb_a(nb, stack_a, x);
 		price += push_a(stack_a, stack_b, x);
 		// printf("new min\n");
 	}
