@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   push_swap.h                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: maw <maw@student.42.fr>                    +#+  +:+       +#+        */
+/*   By: masase <masase@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/04 17:11:15 by masase            #+#    #+#             */
-/*   Updated: 2024/11/20 20:10:08 by maw              ###   ########.fr       */
+/*   Updated: 2024/11/24 14:49:19 by masase           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -63,8 +63,13 @@ int				checkifsorted(t_lista **lst);
 int				tri_trois(t_lista **stack_a, int x);
 int				getmax(t_lista **stack_b);
 int				getmin(t_lista **stack_b);
+int				newmax(t_lista **stack_a, t_lista **stack_b);
+int				newmin(t_lista **stack_a, t_lista **stack_b);
 int				push_from_b_to_a(t_lista **stack_a, t_lista **stack_b, int x);
 int				pushmiddle_bis(t_lista **stack_a, t_lista **stack_b, int x);
 int				searchnb(t_lista **lst, int nb);
+int				rotator(t_lista **stack_a, t_lista **stack_b, int r_a, int r_b, int x);
+int				rotatefornb_b(t_lista **stack_b, int bestnb, int x);
+
 
 #endif

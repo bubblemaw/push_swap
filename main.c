@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   main.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: maw <maw@student.42.fr>                    +#+  +:+       +#+        */
+/*   By: masase <masase@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/04 17:35:04 by masase            #+#    #+#             */
-/*   Updated: 2024/11/24 13:04:23 by maw              ###   ########.fr       */
+/*   Updated: 2024/11/24 16:51:07 by masase           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,9 +45,13 @@ int	main(int argc, char **argv)
 {
 	t_lista	*stack_a;
 	t_lista	*stack_b;
+	t_lista *copy_a = NULL;
+	t_lista *copy_b = NULL;
 	int		bestnb;
 	int		x;
 	int		price;
+	int	r_a = 0;
+	int r_b = 0;
 
 	x = 1;
 	price = 0;
@@ -74,29 +78,37 @@ int	main(int argc, char **argv)
 		x = 0;
 		bestnb = ilfautledire(&stack_a, &stack_b, x);
 		// printf("%d est le meilleure numero a pousse\n ", bestnb);
-		x = 1;
-		price += lookfornb_a(bestnb, &stack_a, x);
+		copy_a = ft_lst_copy(&stack_a);
+		copy_b = ft_lst_copy(&stack_b);
+		// printf("A =  %d et B = %d\n", r_a, r_b);
+		r_a = lookfornb_a(bestnb, &copy_a, x);
 		// printf("je modifie les liste pour push le bon nb\n");
 		// printlist(stack_a);
 		// printlist(stack_b);
-		price += push_from_a_to_b(&stack_a, &stack_b, x);
+		r_b = push_from_a_to_b(&copy_a, &copy_b, x);
+		x = 1;
+		printf("A =  %d et B = %d\n", r_a, r_b);
+		price += rotator(&stack_a, &stack_b, r_a, r_b, x);
+		printf("A =  %d et B = %d\n", r_a, r_b);
+		ft_lstclear_bis(&copy_a);
+		ft_lstclear_bis(&copy_b);
+		// price += rotate_push(&stack_a, &stack_b, r_a, r_b, x);
 		// printf("LISTE APRES PUSH\n");
 		// printlist(stack_a);
 		// printlist(stack_b);
 	}
 	price += tri_trois(&stack_a, x);
-	// printf("LISTE APRES TRIS TROIS\n");
-	// printlist(stack_a);
-	// printlist(stack_b);
-	while (stack_b)
-		price += push_from_b_to_a(&stack_a, &stack_b, x);
-	bestnb = getmin(&stack_a);
-	// printf("%d\n", bestnb);
-	price += lookfornb_a(bestnb, &stack_a, x);
+	printf("LISTE APRES TRIS TROIS\n");
 	printlist(stack_a);
 	printlist(stack_b);
 	printf("Nombre de coup: %d\n", price);
+	// while (stack_b)
+	// 	price += push_from_b_to_a(&stack_a, &stack_b, x);
+	// bestnb = getmin(&stack_a);
+	// // printf("%d\n", bestnb);
+	// price += lookfornb_a(bestnb, &stack_a, x);
+	// printlist(stack_a);
+	// printlist(stack_b);
+	// printf("Nombre de coup: %d\n", price);
 	return (0);
 }
-
-
