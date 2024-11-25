@@ -6,7 +6,7 @@
 /*   By: masase <masase@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/14 17:02:50 by maw               #+#    #+#             */
-/*   Updated: 2024/11/21 16:49:37 by masase           ###   ########.fr       */
+/*   Updated: 2024/11/25 15:25:05 by masase           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,7 +28,7 @@ int	swap_b(t_lista **stack_b, int x)
 		write(1, "sb\n", 3);
 		return (1);
 	}
-	return (0);
+	return (1);
 }
 
 int	push_b(t_lista **stack_a, t_lista **stack_b, int x)
@@ -43,7 +43,7 @@ int	push_b(t_lista **stack_a, t_lista **stack_b, int x)
 		write(1, "pb\n", 3);
 		return (1);
 	}
-	return (0);
+	return (1);
 }
 
 int	rotate_b(t_lista **stack_b, int x)
@@ -56,7 +56,7 @@ int	rotate_b(t_lista **stack_b, int x)
 		write(1, "rb\n", 3);
 		return (1);
 	}
-	return (0);
+	return (1);
 }
 
 int	reverse_rotate_b(t_lista **stack_b, int x)
@@ -80,6 +80,6 @@ int	reverse_rotate_b(t_lista **stack_b, int x)
 		write(1, "rrb\n", 4);
 		return (1);
 	}
-	return (0);
+	return (1);
 }
 

@@ -6,7 +6,7 @@
 /*   By: masase <masase@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/04 17:11:15 by masase            #+#    #+#             */
-/*   Updated: 2024/11/24 14:49:19 by masase           ###   ########.fr       */
+/*   Updated: 2024/11/25 18:38:42 by masase           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -59,6 +59,7 @@ int				push_from_a_to_b(t_lista **stack_a, t_lista **stack_b, int x);
 int				lookfornb_a(int bestnb, t_lista **stack_a, int x);
 int				lookfornb_b(int bestnb, t_lista **stack_b, int x);
 int				ilfautledire(t_lista **stack_a, t_lista **stack_b, int x);
+int				ilfautledire_bis(t_lista **stack_a, t_lista **stack_b, int x);
 int				checkifsorted(t_lista **lst);
 int				tri_trois(t_lista **stack_a, int x);
 int				getmax(t_lista **stack_b);
@@ -70,6 +71,7 @@ int				pushmiddle_bis(t_lista **stack_a, t_lista **stack_b, int x);
 int				searchnb(t_lista **lst, int nb);
 int				rotator(t_lista **stack_a, t_lista **stack_b, int r_a, int r_b, int x);
 int				rotatefornb_b(t_lista **stack_b, int bestnb, int x);
+int				rotator_bis(t_lista **stack_a, t_lista **stack_b, int r_a, int r_b, int x);
 
 
 #endif

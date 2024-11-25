@@ -6,7 +6,7 @@
 /*   By: masase <masase@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/11 15:47:32 by masase            #+#    #+#             */
-/*   Updated: 2024/11/24 16:50:58 by masase           ###   ########.fr       */
+/*   Updated: 2024/11/25 18:38:41 by masase           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -74,12 +74,16 @@ int	pushmiddle(t_lista **stack_a, t_lista **stack_b, int x)
 	price = 0;
 	while (1)
 	{
+		
 		if ((*stack_a)->nb > temp->nb && (*stack_a)->nb < temp->prev->nb)
+		{
 			nb = temp->nb;
+		}
 		temp = temp->next;
 		if (temp == *stack_b)
 			break ;
 	}
+	// printf("le nb a mettre en haut est :%ld\n", nb);
 	price = rotatefornb_b(stack_b, nb, x);
 	// while ((*stack_b)->nb != nb)
 	// 	price += rotate_b(stack_b, x);
@@ -103,9 +107,10 @@ int	pushmiddle_bis(t_lista **stack_a, t_lista **stack_b, int x)
 		if (temp == *stack_a)
 			break ;
 	}
-	while ((*stack_a)->nb != nb)
-		price += rotate_a(stack_a, x);
-	price += push_a(stack_a, stack_b, x);
+	price = rotatefornb_b(stack_a, nb, x);
+	// while ((*stack_a)->nb != nb)
+	// 	price += rotate_a(stack_a, x);
+	// price += push_a(stack_a, stack_b, x);
 	return (price);
 }
 int	push_from_a_to_b(t_lista **stack_a, t_lista **stack_b, int x)
@@ -135,15 +140,15 @@ int	push_from_b_to_a(t_lista **stack_a, t_lista **stack_b, int x)
 	if (newmax(stack_b, stack_a) == 1)
 	{
 		nb = getmin(stack_a);
-		price += lookfornb_a(nb, stack_a, x);
-		price += push_a(stack_a, stack_b, x);
+		price = lookfornb_a(nb, stack_a, x);
+		// price += push_a(stack_a, stack_b, x);
 		// printf("new max\n");
 	}
 	else if (newmin(stack_b, stack_a) == 1)
 	{
 		nb = getmin(stack_a);
-		price += lookfornb_a(nb, stack_a, x);
-		price += push_a(stack_a, stack_b, x);
+		price = lookfornb_a(nb, stack_a, x);
+		// price += push_a(stack_a, stack_b, x);
 		// printf("new min\n");
 	}
 	else
@@ -158,20 +163,26 @@ int	ilfautledire_bis(t_lista **stack_a, t_lista **stack_b, int x)
 {
 	/*il faut surment que je remplace le price par r_a et r_b pour mieux calculer les rapports et vrmt
 	sortir le nombre qui va me couter le moins de cout*/
-	
-	while ((*stack_a)->nb != nbbase)
+	t_lista *copy_a = NULL;
+	t_lista *copy_b = NULL;
+	int	r_a = 0;
+	int	r_b = 0;
+	int price = 0;
+	int bestprice = 999;
+	int nbbase;
+	int bestnb = (*stack_a)->nb;
+	nbbase = (*stack_a)->nb;
+
+
+	while (1)
 	{
 		copy_a = ft_lst_copy(stack_a);
 		copy_b = ft_lst_copy(stack_b);
-		r_a = lookfornb_a(bestnb, &copy_a, x);
 		r_b = push_from_a_to_b(&copy_a, &copy_b, x);
-		price = rotator(cop);
+		price = rotator(&copy_a, &copy_b, r_a, r_b, x);
+		// printf("le prix est de %d\n", price);
 		ft_lstclear_bis(&copy_a);
 		ft_lstclear_bis(&copy_b);
-
-		copy_a = ft_lst_copy(stack_a);
-		copy_b = ft_lst_copy(stack_b);
-		price = push_from_a_to_b(&copy_a, &copy_b, x);
 		if (price < bestprice)
 		{
 			bestprice = price;
@@ -180,6 +191,10 @@ int	ilfautledire_bis(t_lista **stack_a, t_lista **stack_b, int x)
 		ft_lstclear_bis(&copy_a);
 		ft_lstclear_bis(&copy_b);
 		rotate_a(stack_a, x);
+		r_a++;
+		// printf("le R_a =  %d\n", r_a);
+		if ((*stack_a)->nb == nbbase)
+			break ;
 	}
 	return (bestnb);
 }
@@ -189,24 +204,22 @@ int	ilfautledire(t_lista **stack_a, t_lista **stack_b, int x)
 	sortir le nombre qui va me couter le moins de cout*/
 	t_lista *copy_a = NULL;
 	t_lista *copy_b = NULL;
-	int		price;
-	int		bestprice;
-	int		nbbase;
-	int		bestnb;
-
-	copy_a = ft_lst_copy(stack_a);
-	copy_b = ft_lst_copy(stack_b);
-	bestprice = push_from_a_to_b(&copy_a, &copy_b, x);
+	int	r_a = 0;
+	int	r_b = 0;
+	int price = 0;
+	int bestprice = 999;
+	int nbbase;
+	int bestnb = (*stack_a)->nb;
 	nbbase = (*stack_a)->nb;
-	bestnb = (*stack_a)->nb;
-	ft_lstclear_bis(&copy_a);
-	ft_lstclear_bis(&copy_b);
-	rotate_a(stack_a, x);
-	while ((*stack_a)->nb != nbbase)
+	while (1)
 	{
 		copy_a = ft_lst_copy(stack_a);
 		copy_b = ft_lst_copy(stack_b);
-		price = push_from_a_to_b(&copy_a, &copy_b, x);
+		r_b = push_from_b_to_a(&copy_a, &copy_b, x);
+		price = rotator(&copy_a, &copy_b, r_a, r_b, x);
+		// printf("le prix est de %d\n", price);
+		ft_lstclear_bis(&copy_a);
+		ft_lstclear_bis(&copy_b);
 		if (price < bestprice)
 		{
 			bestprice = price;
@@ -215,6 +228,10 @@ int	ilfautledire(t_lista **stack_a, t_lista **stack_b, int x)
 		ft_lstclear_bis(&copy_a);
 		ft_lstclear_bis(&copy_b);
 		rotate_a(stack_a, x);
+		r_a++;
+		// printf("le R_a =  %d\n", r_a);
+		if ((*stack_a)->nb == nbbase)
+			break ;
 	}
 	return (bestnb);
 }
@@ -298,6 +315,46 @@ int	rotator(t_lista **stack_a, t_lista **stack_b, int r_a, int r_b, int x)
 		r_b++;
 	}
 	price += push_b(stack_a, stack_b, x);
+	return (price);
+}
+int	rotator_bis(t_lista **stack_a, t_lista **stack_b, int r_a, int r_b, int x)
+{
+	int price;
+
+	price = 0;
+	while (r_a > 0 && r_b > 0)
+	{
+		price += double_rotate(stack_a, stack_b, x);
+		r_a--;
+		r_b--;
+	}
+	while (r_a < 0 && r_b < 0)
+	{
+		price += two_reverse_rotate(stack_a, stack_b, x);
+		r_a++;
+		r_b++;
+	}
+	while (r_a > 0)
+	{
+		price += rotate_a(stack_a, x);
+		r_a--;
+	}
+	while (r_b > 0)
+	{
+		price += rotate_b(stack_b, x);
+		r_b--;
+	}
+	while (r_a < 0)
+	{
+		price += reverse_rotate_a(stack_a, x);
+		r_a++;
+	}
+	while (r_b < 0)
+	{
+		price += reverse_rotate_b(stack_b, x);
+		r_b++;
+	}
+	price += push_a(stack_a, stack_b, x);
 	return (price);
 }
 
