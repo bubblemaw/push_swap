@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   push_swap.h                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: masase <masase@student.42.fr>              +#+  +:+       +#+        */
+/*   By: maw <maw@student.42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/04 17:11:15 by masase            #+#    #+#             */
-/*   Updated: 2024/11/25 18:38:42 by masase           ###   ########.fr       */
+/*   Updated: 2024/11/26 16:52:25 by maw              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -69,9 +69,17 @@ int				newmin(t_lista **stack_a, t_lista **stack_b);
 int				push_from_b_to_a(t_lista **stack_a, t_lista **stack_b, int x);
 int				pushmiddle_bis(t_lista **stack_a, t_lista **stack_b, int x);
 int				searchnb(t_lista **lst, int nb);
-int				rotator(t_lista **stack_a, t_lista **stack_b, int r_a, int r_b, int x);
+int				rotator(t_lista **stack_a, t_lista **stack_b, int r_a, int r_b);
+int				rota_b_t(t_lista **a, t_lista **b, int r_a, int r_b);
+int				rota_a_t(t_lista **a, t_lista **b, int r_a, int r_b);
+int				rota_left_t(t_lista **a, t_lista **b, int r_a, int r_b);
+int				rota_b_f(t_lista **a, t_lista **b, int r_a, int r_b);
+int				rota_a_f(t_lista **a, t_lista **b, int r_a, int r_b);
+int				rota_left_f(t_lista **a, t_lista **b, int r_a, int r_b);
+
 int				rotatefornb_b(t_lista **stack_b, int bestnb, int x);
-int				rotator_bis(t_lista **stack_a, t_lista **stack_b, int r_a, int r_b, int x);
+int				rota(t_lista **stack_a, t_lista **stack_b, int r_a, int r_b);
+int				push_above_max(t_lista **stack_b, int x);
 
 
 #endif

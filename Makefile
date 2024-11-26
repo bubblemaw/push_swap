@@ -3,10 +3,10 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: masase <masase@student.42.fr>              +#+  +:+       +#+         #
+#    By: maw <maw@student.42.fr>                    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/09/24 17:01:35 by maw               #+#    #+#              #
-#    Updated: 2024/11/24 16:22:20 by masase           ###   ########.fr        #
+#    Updated: 2024/11/26 16:36:39 by maw              ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -21,6 +21,8 @@ SRCS =	main.c \
 		arg_manager.c \
 		algo.c \
 		findnumbers.c \
+		rotation_true.c \
+		rotation_false.c \
 		
 		
 OBJS := $(SRCS:%.c=%.o)
