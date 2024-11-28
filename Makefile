@@ -6,7 +6,7 @@
 #    By: maw <maw@student.42.fr>                    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/09/24 17:01:35 by maw               #+#    #+#              #
-#    Updated: 2024/11/28 18:06:31 by maw              ###   ########.fr        #
+#    Updated: 2024/11/28 19:19:53 by maw              ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -21,6 +21,7 @@ SRCS =	main.c \
 		arg_manager.c \
 		algo.c \
 		findnumbers.c \
+		findnumbers2.c \
 		rotation_true.c \
 		rotation_false.c \
 		price_checker.c \

@@ -6,7 +6,7 @@
 /*   By: maw <maw@student.42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/04 17:11:15 by masase            #+#    #+#             */
-/*   Updated: 2024/11/28 18:28:45 by maw              ###   ########.fr       */
+/*   Updated: 2024/11/28 19:39:32 by maw              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -91,6 +91,8 @@ int				rota(t_lista **stack_a, t_lista **stack_b, int r_a, int r_b);
 int				push_above_max(t_lista **stack_b, int x);
 void			pricechecking_b(t_lista **a, t_lista **b, t_price *data);
 void			pricechecking_a(t_lista **a, t_lista **b, t_price *data);
+void			firstsorting(t_lista **stack_a, t_lista **stack_b);
+void			secondsorting(t_lista **stack_a, t_lista **stack_b);
 
 
 #endif
