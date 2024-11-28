@@ -6,7 +6,7 @@
 /*   By: maw <maw@student.42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/08 12:20:56 by masase            #+#    #+#             */
-/*   Updated: 2024/11/26 17:18:07 by maw              ###   ########.fr       */
+/*   Updated: 2024/11/27 15:50:16 by maw              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -141,9 +141,9 @@ int	ft_lstsize_bis(t_lista *lst)
 	while (1)
 	{
 		temp = temp->next;
+		i++;
 		if (temp == lst)
 			break ;
-		i++;
 	}
 	return (i);
 }

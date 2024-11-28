@@ -6,7 +6,7 @@
 #    By: maw <maw@student.42.fr>                    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/09/24 17:01:35 by maw               #+#    #+#              #
-#    Updated: 2024/11/26 16:36:39 by maw              ###   ########.fr        #
+#    Updated: 2024/11/28 18:06:31 by maw              ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -23,6 +23,7 @@ SRCS =	main.c \
 		findnumbers.c \
 		rotation_true.c \
 		rotation_false.c \
+		price_checker.c \
 		
 		
 OBJS := $(SRCS:%.c=%.o)

@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   utils1.c                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: masase <masase@student.42.fr>              +#+  +:+       +#+        */
+/*   By: maw <maw@student.42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/08 14:38:40 by masase            #+#    #+#             */
-/*   Updated: 2024/11/17 20:43:53 by masase           ###   ########.fr       */
+/*   Updated: 2024/11/28 18:08:19 by maw              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,13 +44,48 @@ long int	ft_atoi_swap(const char *str)
 	return (resultat * signe);
 }
 
-// int	is_sorted(t_lista **stack_a)
-// {
-// 	int	i;
+int	checkifsorted(t_lista **lst)
+{
+	int		nb;
+	t_lista	*temp;
 
-// 	i = ;
-// 	while (*stack_a)
-// 	{
-		
-// 	}
-// }
+	temp = *lst;
+	nb = temp->nb;
+	temp = temp->next;
+	while (1)
+	{
+		if (*lst == temp)
+			break ;
+		if (nb > temp->nb)
+			return (0);
+		nb = temp->nb;
+		temp = temp->next;
+	}
+	return (1);
+}
+
+int	tri_trois(t_lista **ls, int x)
+{
+	int	price;
+
+	price = 0;
+	if ((*ls)->nb < (*ls)->next->nb && (*ls)->next->nb < (*ls)->prev->nb)
+		return (price);
+	else if ((*ls)->nb > (*ls)->next->nb && (*ls)->next->nb > (*ls)->prev->nb)
+	{
+		price += rotate_a(ls, x);
+		price += swap_a(ls, x);
+	}
+	else if ((*ls)->nb > (*ls)->prev->nb && (*ls)->prev->nb > (*ls)->next->nb)
+		price += rotate_a(ls, x);
+	else if ((*ls)->next->nb > (*ls)->nb && (*ls)->nb > (*ls)->prev->nb)
+		price += reverse_rotate_a(ls, x);
+	else if ((*ls)->next->nb > (*ls)->prev->nb && (*ls)->prev->nb > (*ls)->nb)
+	{
+		price += reverse_rotate_a(ls, x);
+		price += swap_a(ls, x);
+	}
+	else if ((*ls)->prev->nb > (*ls)->nb && (*ls)->nb > (*ls)->next->nb)
+		price += swap_a(ls, x);
+	return (price);
+}

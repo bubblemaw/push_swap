@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   findnumbers.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: masase <masase@student.42.fr>              +#+  +:+       +#+        */
+/*   By: maw <maw@student.42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/24 13:23:54 by masase            #+#    #+#             */
-/*   Updated: 2024/11/25 18:38:48 by masase           ###   ########.fr       */
+/*   Updated: 2024/11/28 18:33:53 by maw              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,6 +29,7 @@ int	getmax(t_lista **stack_b)
 	}
 	return (nb);
 }
+
 int	getmin(t_lista **stack_b)
 {
 	t_lista	*temp;
@@ -106,11 +107,6 @@ int	lookfornb_a(int bestnb, t_lista **stack_a, int x)
 
 	size = ft_lstsize_bis(*stack_a);
 	r_a = 0;
-	// if ((*stack_a)->next->nb == bestnb)
-	// {
-	// 	swap_a(stack_a, x);
-	// 	return (0);
-	// }
 	i = searchnb(stack_a, bestnb);
 	if (i <= size / 2)
 	{
@@ -119,7 +115,6 @@ int	lookfornb_a(int bestnb, t_lista **stack_a, int x)
 	}
 	else
 	{
-		i = size - i;
 		while ((*stack_a)->nb != bestnb)
 			r_a -= reverse_rotate_a(stack_a, x);
 	}
@@ -134,8 +129,6 @@ int	lookfornb_b(int bestnb, t_lista **stack_b, int x)
 
 	size = ft_lstsize_bis(*stack_b);
 	r_b = 0;
-	// if ((*stack_b)->next->nb == bestnb)
-	// 	return (r_b += swap_b(stack_b, x));
 	i = searchnb(stack_b, bestnb);
 	if (i <= size / 2)
 	{
@@ -144,7 +137,6 @@ int	lookfornb_b(int bestnb, t_lista **stack_b, int x)
 	}
 	else
 	{
-		i = size - i;
 		while ((*stack_b)->nb != bestnb)
 			r_b -= reverse_rotate_a(stack_b, x);
 	}
@@ -155,8 +147,9 @@ int	rotatefornb_b(t_lista **stack_b, int bestnb, int x)
 {
 	int	i;
 	int	size;
-	int r_b = 0;
+	int	r_b;
 
+	r_b = 0;
 	size = ft_lstsize_bis(*stack_b);
 	i = searchnb(stack_b, bestnb);
 	if (i <= size / 2)

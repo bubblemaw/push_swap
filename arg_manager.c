@@ -6,7 +6,7 @@
 /*   By: maw <maw@student.42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/14 17:40:29 by maw               #+#    #+#             */
-/*   Updated: 2024/11/26 17:10:30 by maw              ###   ########.fr       */
+/*   Updated: 2024/11/28 18:31:08 by maw              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,6 +31,13 @@ int	checkdouble_checknbmax(t_lista **lst)
 		if (current == *lst)
 			break ;
 	}
+	return (checknbmax(lst));
+}
+
+int	checknbmax(t_lista **lst)
+{
+	t_lista	*current;
+
 	current = *lst;
 	while (1)
 	{
