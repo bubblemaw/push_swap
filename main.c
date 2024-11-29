@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   main.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: maw <maw@student.42.fr>                    +#+  +:+       +#+        */
+/*   By: masase <masase@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/04 17:35:04 by masase            #+#    #+#             */
-/*   Updated: 2024/11/28 19:42:23 by maw              ###   ########.fr       */
+/*   Updated: 2024/11/29 16:00:50 by masase           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -49,20 +49,15 @@ int	main(int argc, char **argv)
 		return (error());
 	if (checkifsorted(&stack_a) == 1)
 		return (0);
+	if (ft_lstsize_bis(stack_a) == 2)
+		return (twoinput(&stack_a));
 	if (ft_lstsize_bis(stack_a) == 3)
-	{
-		tri_trois(&stack_a, 1);
-		ft_lstclear_bis(&stack_a);
-		ft_lstclear_bis(&stack_b);
-		return (0);
-	}
+		return (threeinput(&stack_a));
 	firstsorting(&stack_a, &stack_b);
 	tri_trois(&stack_a, 1);
 	secondsorting(&stack_a, &stack_b);
 	ft_lstclear_bis(&stack_a);
 	ft_lstclear_bis(&stack_b);
-	// printlist(stack_a);
-	// printf("Nombre de coup: %d\n", price);
 	return (0);
 }
 

@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   utils1.c                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: maw <maw@student.42.fr>                    +#+  +:+       +#+        */
+/*   By: masase <masase@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/08 14:38:40 by masase            #+#    #+#             */
-/*   Updated: 2024/11/28 18:08:19 by maw              ###   ########.fr       */
+/*   Updated: 2024/11/29 13:52:44 by masase           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,9 +36,9 @@ long int	ft_atoi_swap(const char *str)
 	}
 	while (str[i])
 	{
-		resultat = resultat * 10 + (str[i] - '0');
 		if (str[i] < '0' || str[i] > '9')
 			return (ERROR_NB);
+		resultat = resultat * 10 + (str[i] - '0');
 		i++;
 	}
 	return (resultat * signe);
@@ -61,6 +61,7 @@ int	checkifsorted(t_lista **lst)
 		nb = temp->nb;
 		temp = temp->next;
 	}
+	ft_lstclear_bis(lst);
 	return (1);
 }
 

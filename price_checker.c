@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   price_checker.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: maw <maw@student.42.fr>                    +#+  +:+       +#+        */
+/*   By: masase <masase@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/28 18:03:21 by maw               #+#    #+#             */
-/*   Updated: 2024/11/28 18:06:08 by maw              ###   ########.fr       */
+/*   Updated: 2024/11/29 15:44:34 by masase           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,6 +26,7 @@ int	search_bestnb_a(t_lista **stack_a, t_lista **stack_b)
 	while (1)
 	{
 		pricechecking_a(stack_a, stack_b, &data);
+		rotate_a(stack_a, 0);
 		data.r_a++;
 		if ((*stack_a)->nb == nbbase)
 			break ;

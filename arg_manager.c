@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   arg_manager.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: maw <maw@student.42.fr>                    +#+  +:+       +#+        */
+/*   By: masase <masase@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/14 17:40:29 by maw               #+#    #+#             */
-/*   Updated: 2024/11/28 18:31:08 by maw              ###   ########.fr       */
+/*   Updated: 2024/11/29 15:16:23 by masase           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,7 +24,10 @@ int	checkdouble_checknbmax(t_lista **lst)
 		while (temp != *lst)
 		{
 			if (temp->nb == current->nb)
+			{
+				ft_lstclear_bis(lst);
 				return (0);
+			}		
 			temp = temp->next;
 		}
 		current = current->next;
@@ -42,7 +45,10 @@ int	checknbmax(t_lista **lst)
 	while (1)
 	{
 		if (current->nb < -2147483648 || current->nb > 2147483647)
+		{
+			ft_lstclear_bis(lst);
 			return (0);
+		}
 		current = current->next;
 		if (current == *lst)
 			break ;
@@ -55,11 +61,14 @@ void	freetab(char **tab)
 	int	i;
 
 	i = 0;
+	if (!tab)
+		return ;
 	while (tab[i])
 	{
 		free(tab[i]);
 		i++;
 	}
+	free(tab);
 }
 
 int	twoargmanager(char *str, t_lista **lst)
@@ -77,9 +86,11 @@ int	twoargmanager(char *str, t_lista **lst)
 	while (i >= 0)
 	{
 		new_node = ft_lstnew_bis(ft_atoi_swap(tab[i]));
-		if (new_node->nb == ERROR_NB)
+		if (!new_node || new_node->nb == ERROR_NB)
 		{
+			deletenod(&new_node);
 			ft_lstclear_bis(lst);
+			freetab(tab);
 			return (0);
 		}
 		ft_lstadd_front_bis(lst, new_node);
@@ -98,8 +109,9 @@ int	argmanager(t_lista **lst, int arg, char **argv)
 	while (i > 0)
 	{
 		new_node = ft_lstnew_bis(ft_atoi_swap(argv[i]));
-		if (new_node->nb == ERROR_NB)
+		if (!new_node || new_node->nb == ERROR_NB)
 		{
+			deletenod(&new_node);
 			ft_lstclear_bis(lst);
 			return (0);
 		}
