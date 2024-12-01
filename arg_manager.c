@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   arg_manager.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: masase <masase@student.42.fr>              +#+  +:+       +#+        */
+/*   By: maw <maw@student.42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/14 17:40:29 by maw               #+#    #+#             */
-/*   Updated: 2024/11/29 15:16:23 by masase           ###   ########.fr       */
+/*   Updated: 2024/12/01 14:33:39 by maw              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,7 +27,7 @@ int	checkdouble_checknbmax(t_lista **lst)
 			{
 				ft_lstclear_bis(lst);
 				return (0);
-			}		
+			}
 			temp = temp->next;
 		}
 		current = current->next;
