@@ -6,7 +6,7 @@
 /*   By: masase <masase@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/29 14:30:05 by masase            #+#    #+#             */
-/*   Updated: 2024/11/29 14:32:38 by masase           ###   ########.fr       */
+/*   Updated: 2024/12/01 15:20:17 by masase           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,7 +37,6 @@ void	ft_lstadd_back_bis(t_lista **lst, t_lista *new)
 
 	if (!lst || !new)
 		return ;
-
 	if (!*lst)
 	{
 		new->next = new;

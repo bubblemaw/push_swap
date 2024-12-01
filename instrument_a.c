@@ -6,7 +6,7 @@
 /*   By: masase <masase@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/10 17:59:32 by masase            #+#    #+#             */
-/*   Updated: 2024/11/25 15:24:48 by masase           ###   ########.fr       */
+/*   Updated: 2024/12/01 15:16:32 by masase           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -66,10 +66,8 @@ int	reverse_rotate_a(t_lista **stack_a, int x)
 	if (!stack_a || !*stack_a || (*stack_a)->next == *stack_a)
 		return (0);
 	last = (*stack_a)->prev;
-
 	last->prev->next = *stack_a;
 	(*stack_a)->prev = last->prev;
-
 	last->next = *stack_a;
 	last->prev = (*stack_a)->prev;
 	(*stack_a)->prev->next = last;

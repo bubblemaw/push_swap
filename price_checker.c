@@ -6,7 +6,7 @@
 /*   By: masase <masase@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/28 18:03:21 by maw               #+#    #+#             */
-/*   Updated: 2024/11/29 15:44:34 by masase           ###   ########.fr       */
+/*   Updated: 2024/12/01 16:24:09 by masase           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,7 +22,6 @@ int	search_bestnb_a(t_lista **stack_a, t_lista **stack_b)
 	data.r_a = 0;
 	data.r_b = 0;
 	nbbase = (*stack_a)->nb;
-
 	while (1)
 	{
 		pricechecking_a(stack_a, stack_b, &data);
@@ -42,8 +41,8 @@ void	pricechecking_a(t_lista **a, t_lista **b, t_price *data)
 
 	copy_a = ft_lst_copy(a);
 	copy_b = ft_lst_copy(b);
-	data->r_b = push_from_a_to_b(&copy_a, &copy_b, 0);
-	price = rota_b_f(&copy_a, &copy_b, data->r_a, data->r_b);
+	data->r_b = rb_push_a_to_b(&copy_a, &copy_b, 0);
+	price = rota_push_b_false(&copy_a, &copy_b, data->r_a, data->r_b);
 	if (price < data->bestprice)
 	{
 		data->bestprice = price;
@@ -67,7 +66,7 @@ int	search_bestnb_b(t_lista **stack_a, t_lista **stack_b)
 	{
 		pricechecking_b(stack_a, stack_b, &data);
 		rotate_a(stack_a, 0);
-		data.r_a++;
+		data.r_b++;
 		if ((*stack_a)->nb == nbbase)
 			break ;
 	}
@@ -82,8 +81,8 @@ void	pricechecking_b(t_lista **a, t_lista **b, t_price *data)
 
 	copy_a = ft_lst_copy(a);
 	copy_b = ft_lst_copy(b);
-	data->r_b = push_from_b_to_a(&copy_a, &copy_b, 0);
-	price = rota_a_f(&copy_a, &copy_b, data->r_a, data->r_b);
+	data->r_a = ra_push_b_to_a(&copy_a, &copy_b, 0);
+	price = rota_push_a_false(&copy_a, &copy_b, data->r_a, data->r_b);
 	if (price < data->bestprice)
 	{
 		data->bestprice = price;

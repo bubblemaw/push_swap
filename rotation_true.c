@@ -3,16 +3,16 @@
 /*                                                        :::      ::::::::   */
 /*   rotation_true.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: maw <maw@student.42.fr>                    +#+  +:+       +#+        */
+/*   By: masase <masase@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/26 16:02:52 by maw               #+#    #+#             */
-/*   Updated: 2024/11/28 14:37:57 by maw              ###   ########.fr       */
+/*   Updated: 2024/12/01 16:24:18 by masase           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-int	rota_b_t(t_lista **a, t_lista **b, int r_a, int r_b)
+int	rota_push_b_true(t_lista **a, t_lista **b, int r_a, int r_b)
 {
 	int	price;
 	int	x;
@@ -41,7 +41,7 @@ int	rota_b_t(t_lista **a, t_lista **b, int r_a, int r_b)
 	return (price);
 }
 
-int	rota_a_t(t_lista **a, t_lista **b, int r_a, int r_b)
+int	rota_push_a_true(t_lista **a, t_lista **b, int r_a, int r_b)
 {
 	int	price;
 	int	x;
@@ -94,4 +94,3 @@ int	rota_left_t(t_lista **a, t_lista **b, int r_a, int r_b)
 	}
 	return (price);
 }
-

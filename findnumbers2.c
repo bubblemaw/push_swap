@@ -6,13 +6,13 @@
 /*   By: masase <masase@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/28 18:34:11 by maw               #+#    #+#             */
-/*   Updated: 2024/11/29 14:35:25 by masase           ###   ########.fr       */
+/*   Updated: 2024/12/01 16:00:05 by masase           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-int	lookfornb_a(int bestnb, t_lista **stack_a, int x)
+int	r_a_calculator(int bestnb, t_lista **stack_a, int x)
 {
 	int		r_a;
 	int		i;
@@ -34,7 +34,7 @@ int	lookfornb_a(int bestnb, t_lista **stack_a, int x)
 	return (r_a);
 }
 
-int	lookfornb_b(int bestnb, t_lista **stack_b, int x)
+int	r_b_calculator(int bestnb, t_lista **stack_b, int x)
 {
 	int		r_b;
 	int		i;
@@ -56,7 +56,7 @@ int	lookfornb_b(int bestnb, t_lista **stack_b, int x)
 	return (r_b);
 }
 
-int	rotatefornb_b(t_lista **stack_b, int bestnb, int x)
+int	rotatefornb(t_lista **stack_b, int bestnb, int x)
 {
 	int	i;
 	int	size;

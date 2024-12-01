@@ -6,7 +6,7 @@
 /*   By: masase <masase@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/08 12:20:56 by masase            #+#    #+#             */
-/*   Updated: 2024/11/29 14:32:11 by masase           ###   ########.fr       */
+/*   Updated: 2024/12/01 15:17:31 by masase           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -72,14 +72,12 @@ void	deletenod(t_lista **nod)
 
 	if (!nod || !*nod)
 		return ;
-
 	if ((*nod)->next == *nod)
 	{
 		free(*nod);
 		*nod = NULL;
 		return ;
 	}
-
 	temp = (*nod)->next;
 	(*nod)->prev->next = temp;
 	temp->prev = (*nod)->prev;
@@ -95,5 +93,3 @@ void	deletenod_last(t_lista *nod)
 	temp->next = NULL;
 	free(nod);
 }
-
-

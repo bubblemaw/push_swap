@@ -6,31 +6,11 @@
 /*   By: masase <masase@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/04 17:35:04 by masase            #+#    #+#             */
-/*   Updated: 2024/11/29 16:00:50 by masase           ###   ########.fr       */
+/*   Updated: 2024/12/01 16:24:27 by masase           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
-
-void	printlist(t_lista *lst)
-{
-	t_lista	*first;
-
-	if (!lst)
-	{
-		printf("NULL\n");
-		return ;
-	}
-	first = lst;
-	while (1)
-	{
-		printf("%ld ->", lst->nb);
-		lst = lst->next;
-		if (lst == first)
-			break ;
-	}
-	printf("\n");
-}
 
 int	main(int argc, char **argv)
 {
@@ -78,9 +58,9 @@ void	firstsorting(t_lista **stack_a, t_lista **stack_b)
 		bestnb = search_bestnb_a(stack_a, stack_b);
 		copy_a = ft_lst_copy(stack_a);
 		copy_b = ft_lst_copy(stack_b);
-		r_a = lookfornb_a(bestnb, &copy_a, 0);
-		r_b = push_from_a_to_b(&copy_a, &copy_b, 0);
-		rota_b_t(stack_a, stack_b, r_a, r_b);
+		r_a = r_a_calculator(bestnb, &copy_a, 0);
+		r_b = rb_push_a_to_b(&copy_a, &copy_b, 0);
+		rota_push_b_true(stack_a, stack_b, r_a, r_b);
 		ft_lstclear_bis(&copy_a);
 		ft_lstclear_bis(&copy_b);
 	}
@@ -101,12 +81,12 @@ void	secondsorting(t_lista **stack_a, t_lista **stack_b)
 		bestnb = search_bestnb_b(stack_a, stack_b);
 		copy_a = ft_lst_copy(stack_a);
 		copy_b = ft_lst_copy(stack_b);
-		r_b = lookfornb_b(bestnb, &copy_a, 0);
-		r_a = push_from_b_to_a(&copy_a, &copy_b, 0);
-		rota_a_t(stack_a, stack_b, r_a, r_b);
+		r_b = r_b_calculator(bestnb, &copy_a, 0);
+		r_a = ra_push_b_to_a(&copy_a, &copy_b, 0);
+		rota_push_a_true(stack_a, stack_b, r_a, r_b);
 		ft_lstclear_bis(&copy_a);
 		ft_lstclear_bis(&copy_b);
 	}
 	bestnb = getmin(stack_a);
-	lookfornb_a(bestnb, stack_a, 1);
+	r_a_calculator(bestnb, stack_a, 1);
 }

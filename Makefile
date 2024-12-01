@@ -6,11 +6,11 @@
 #    By: masase <masase@student.42.fr>              +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/09/24 17:01:35 by maw               #+#    #+#              #
-#    Updated: 2024/11/29 14:43:44 by masase           ###   ########.fr        #
+#    Updated: 2024/12/01 14:56:55 by masase           ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
-NAME =	push_swap.a
+NAME =	push_swap
 
 SRCS =	main.c \
 		listmanager.c \
@@ -39,10 +39,7 @@ RM = rm -f
 
 $(NAME): $(OBJS)
 	$(MAKE) -C $(LIBFT)
-	cp $(LIBFT)/libft.a .
-	mv libft.a $(NAME)
-	gcc $(FLAGS) -c $(SRCS) -I ./
-	ar rc $(NAME) $(OBJS)
+	gcc $(FLAGS) $(OBJS) $(LIBFT)/libft.a -o $(NAME)
 
 all: $(NAME)
 

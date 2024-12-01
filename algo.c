@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   algo.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: maw <maw@student.42.fr>                    +#+  +:+       +#+        */
+/*   By: masase <masase@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/11 15:47:32 by masase            #+#    #+#             */
-/*   Updated: 2024/11/28 18:10:22 by maw              ###   ########.fr       */
+/*   Updated: 2024/12/01 16:40:02 by masase           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,11 +29,11 @@ int	push_above_max(t_lista **stack_b, int x)
 		if (temp == *stack_b)
 			break ;
 	}
-	price = rotatefornb_b(stack_b, nb, x);
+	price = rotatefornb(stack_b, nb, x);
 	return (price);
 }
 
-int	pushmiddle(t_lista **stack_a, t_lista **stack_b, int x)
+int	pushmiddle_a_to_b(t_lista **stack_a, t_lista **stack_b, int x)
 {
 	t_lista			*temp;
 	int				price;
@@ -52,11 +52,11 @@ int	pushmiddle(t_lista **stack_a, t_lista **stack_b, int x)
 		if (temp == *stack_b)
 			break ;
 	}
-	price = rotatefornb_b(stack_b, nb, x);
+	price = rotatefornb(stack_b, nb, x);
 	return (price);
 }
 
-int	pushmiddle_bis(t_lista **stack_a, t_lista **stack_b, int x)
+int	pushmiddle_b_to_a(t_lista **stack_a, t_lista **stack_b, int x)
 {
 	t_lista			*temp;
 	int				price;
@@ -73,11 +73,11 @@ int	pushmiddle_bis(t_lista **stack_a, t_lista **stack_b, int x)
 		if (temp == *stack_a)
 			break ;
 	}
-	price = rotatefornb_b(stack_a, nb, x);
+	price = rotatefornb(stack_a, nb, x);
 	return (price);
 }
 
-int	push_from_a_to_b(t_lista **stack_a, t_lista **stack_b, int x)
+int	rb_push_a_to_b(t_lista **stack_a, t_lista **stack_b, int x)
 {
 	int	price;
 
@@ -85,11 +85,11 @@ int	push_from_a_to_b(t_lista **stack_a, t_lista **stack_b, int x)
 	if (newmax(stack_a, stack_b) == 1 || newmin(stack_a, stack_b) == 1)
 		price += push_above_max(stack_b, x);
 	else
-		price += pushmiddle(stack_a, stack_b, x);
+		price += pushmiddle_a_to_b(stack_a, stack_b, x);
 	return (price);
 }
 
-int	push_from_b_to_a(t_lista **stack_a, t_lista **stack_b, int x)
+int	ra_push_b_to_a(t_lista **stack_a, t_lista **stack_b, int x)
 {
 	int	price;
 	int	nb;
@@ -98,14 +98,14 @@ int	push_from_b_to_a(t_lista **stack_a, t_lista **stack_b, int x)
 	if (newmax(stack_b, stack_a) == 1)
 	{
 		nb = getmin(stack_a);
-		price = lookfornb_a(nb, stack_a, x);
+		price = r_a_calculator(nb, stack_a, x);
 	}
 	else if (newmin(stack_b, stack_a) == 1)
 	{
 		nb = getmin(stack_a);
-		price = lookfornb_a(nb, stack_a, x);
+		price = r_a_calculator(nb, stack_a, x);
 	}
 	else
-		price += pushmiddle_bis(stack_a, stack_b, x);
+		price += pushmiddle_b_to_a(stack_a, stack_b, x);
 	return (price);
 }
