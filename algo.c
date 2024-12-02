@@ -6,7 +6,7 @@
 /*   By: masase <masase@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/11 15:47:32 by masase            #+#    #+#             */
-/*   Updated: 2024/12/01 16:40:02 by masase           ###   ########.fr       */
+/*   Updated: 2024/12/02 15:56:07 by masase           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,7 +29,7 @@ int	push_above_max(t_lista **stack_b, int x)
 		if (temp == *stack_b)
 			break ;
 	}
-	price = rotatefornb(stack_b, nb, x);
+	price = r_b_calculator(nb, stack_b, x);
 	return (price);
 }
 
@@ -52,7 +52,7 @@ int	pushmiddle_a_to_b(t_lista **stack_a, t_lista **stack_b, int x)
 		if (temp == *stack_b)
 			break ;
 	}
-	price = rotatefornb(stack_b, nb, x);
+	price = r_b_calculator(nb, stack_b, x);
 	return (price);
 }
 
@@ -73,7 +73,7 @@ int	pushmiddle_b_to_a(t_lista **stack_a, t_lista **stack_b, int x)
 		if (temp == *stack_a)
 			break ;
 	}
-	price = rotatefornb(stack_a, nb, x);
+	price = r_a_calculator(nb, stack_a, x);
 	return (price);
 }
 

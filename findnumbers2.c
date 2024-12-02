@@ -6,7 +6,7 @@
 /*   By: masase <masase@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/28 18:34:11 by maw               #+#    #+#             */
-/*   Updated: 2024/12/01 16:00:05 by masase           ###   ########.fr       */
+/*   Updated: 2024/12/02 16:00:24 by masase           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -52,34 +52,6 @@ int	r_b_calculator(int bestnb, t_lista **stack_b, int x)
 	{
 		while ((*stack_b)->nb != bestnb)
 			r_b -= reverse_rotate_a(stack_b, x);
-	}
-	return (r_b);
-}
-
-int	rotatefornb(t_lista **stack_b, int bestnb, int x)
-{
-	int	i;
-	int	size;
-	int	r_b;
-
-	r_b = 0;
-	size = ft_lstsize_bis(*stack_b);
-	i = searchnb(stack_b, bestnb);
-	if (i <= size / 2)
-	{
-		while ((*stack_b)->nb != bestnb)
-		{
-			rotate_b(stack_b, x);
-			r_b++;
-		}
-	}
-	else
-	{
-		while ((*stack_b)->nb != bestnb)
-		{
-			reverse_rotate_b(stack_b, x);
-			r_b--;
-		}
 	}
 	return (r_b);
 }

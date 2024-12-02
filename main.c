@@ -6,7 +6,7 @@
 /*   By: masase <masase@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/04 17:35:04 by masase            #+#    #+#             */
-/*   Updated: 2024/12/01 16:24:27 by masase           ###   ########.fr       */
+/*   Updated: 2024/12/02 15:58:52 by masase           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -81,12 +81,13 @@ void	secondsorting(t_lista **stack_a, t_lista **stack_b)
 		bestnb = search_bestnb_b(stack_a, stack_b);
 		copy_a = ft_lst_copy(stack_a);
 		copy_b = ft_lst_copy(stack_b);
-		r_b = r_b_calculator(bestnb, &copy_a, 0);
+		r_b = r_b_calculator(bestnb, &copy_b, 0);
 		r_a = ra_push_b_to_a(&copy_a, &copy_b, 0);
 		rota_push_a_true(stack_a, stack_b, r_a, r_b);
 		ft_lstclear_bis(&copy_a);
 		ft_lstclear_bis(&copy_b);
 	}
 	bestnb = getmin(stack_a);
-	r_a_calculator(bestnb, stack_a, 1);
+	if (bestnb != (*stack_a)->nb)
+		r_a_calculator(bestnb, stack_a, 1);
 }

@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   findnumbers.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: maw <maw@student.42.fr>                    +#+  +:+       +#+        */
+/*   By: masase <masase@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/24 13:23:54 by masase            #+#    #+#             */
-/*   Updated: 2024/11/28 19:20:04 by maw              ###   ########.fr       */
+/*   Updated: 2024/12/02 14:58:21 by masase           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,7 +39,7 @@ int	getmin(t_lista **stack_b)
 	nb = temp->nb;
 	while (1)
 	{
-		if ((temp)->nb < nb)
+		if (temp->nb < nb)
 			nb = temp->nb;
 		temp = temp->next;
 		if (temp == *stack_b)
@@ -95,6 +95,7 @@ int	searchnb(t_lista **lst, int nb)
 			return (i);
 		if (current == *lst)
 			break ;
+		// printf("ca loupe ici");
 	}
 	return (i);
 }

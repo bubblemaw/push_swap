@@ -6,7 +6,7 @@
 /*   By: masase <masase@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/04 17:11:15 by masase            #+#    #+#             */
-/*   Updated: 2024/12/01 16:41:24 by masase           ###   ########.fr       */
+/*   Updated: 2024/12/02 15:11:00 by masase           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -95,5 +95,6 @@ void			secondsorting(t_lista **stack_a, t_lista **stack_b);
 int				tri_trois(t_lista **stack_a, int x);
 int				twoinput(t_lista **lst);
 int				threeinput(t_lista **lst);
+void			print_list(t_lista *head);
 
 #endif

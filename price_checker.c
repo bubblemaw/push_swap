@@ -6,7 +6,7 @@
 /*   By: masase <masase@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/28 18:03:21 by maw               #+#    #+#             */
-/*   Updated: 2024/12/01 16:24:09 by masase           ###   ########.fr       */
+/*   Updated: 2024/12/02 16:23:22 by masase           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,7 +17,7 @@ int	search_bestnb_a(t_lista **stack_a, t_lista **stack_b)
 	t_price	data;
 	int		nbbase;
 
-	data.bestprice = 999;
+	data.bestprice = 2147483647;
 	data.bestnb = (*stack_a)->nb;
 	data.r_a = 0;
 	data.r_b = 0;
@@ -57,17 +57,17 @@ int	search_bestnb_b(t_lista **stack_a, t_lista **stack_b)
 	t_price	data;
 	int		nbbase;
 
-	data.bestprice = 999;
-	data.bestnb = (*stack_a)->nb;
+	data.bestprice = 2147483647;
+	data.bestnb = (*stack_b)->nb;
 	data.r_a = 0;
 	data.r_b = 0;
-	nbbase = (*stack_a)->nb;
+	nbbase = (*stack_b)->nb;
 	while (1)
 	{
 		pricechecking_b(stack_a, stack_b, &data);
-		rotate_a(stack_a, 0);
+		rotate_b(stack_b, 0);
 		data.r_b++;
-		if ((*stack_a)->nb == nbbase)
+		if ((*stack_b)->nb == nbbase)
 			break ;
 	}
 	return (data.bestnb);
@@ -86,7 +86,7 @@ void	pricechecking_b(t_lista **a, t_lista **b, t_price *data)
 	if (price < data->bestprice)
 	{
 		data->bestprice = price;
-		data->bestnb = (*a)->nb;
+		data->bestnb = (*b)->nb;
 	}
 	ft_lstclear_bis(&copy_a);
 	ft_lstclear_bis(&copy_b);
