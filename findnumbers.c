@@ -6,7 +6,7 @@
 /*   By: masase <masase@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/24 13:23:54 by masase            #+#    #+#             */
-/*   Updated: 2024/12/02 14:58:21 by masase           ###   ########.fr       */
+/*   Updated: 2024/12/05 15:09:08 by masase           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -80,7 +80,7 @@ int	newmin(t_lista **stack_a, t_lista **stack_b)
 	return (1);
 }
 
-int	searchnb(t_lista **lst, int nb)
+int	searchnb(t_lista **lst, long int nb)
 {
 	t_lista	*current;
 	int		i;
@@ -95,7 +95,6 @@ int	searchnb(t_lista **lst, int nb)
 			return (i);
 		if (current == *lst)
 			break ;
-		// printf("ca loupe ici");
 	}
 	return (i);
 }

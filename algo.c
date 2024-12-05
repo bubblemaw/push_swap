@@ -6,7 +6,7 @@
 /*   By: masase <masase@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/11 15:47:32 by masase            #+#    #+#             */
-/*   Updated: 2024/12/02 15:56:07 by masase           ###   ########.fr       */
+/*   Updated: 2024/12/05 16:24:44 by masase           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,12 +14,12 @@
 
 int	push_above_max(t_lista **stack_b, int x)
 {
-	int		nb;
-	int		price;
-	t_lista	*temp;
+	long int		nb;
+	int				price;
+	t_lista			*temp;
 
 	temp = *stack_b;
-	nb = 0;
+	nb = -2147483649;
 	price = 0;
 	while (1)
 	{

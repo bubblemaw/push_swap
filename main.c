@@ -6,7 +6,7 @@
 /*   By: masase <masase@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/04 17:35:04 by masase            #+#    #+#             */
-/*   Updated: 2024/12/02 15:58:52 by masase           ###   ########.fr       */
+/*   Updated: 2024/12/05 15:09:57 by masase           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,11 +43,11 @@ int	main(int argc, char **argv)
 
 void	firstsorting(t_lista **stack_a, t_lista **stack_b)
 {
-	t_lista	*copy_a;
-	t_lista	*copy_b;
-	int		bestnb;
-	int		r_a;
-	int		r_b;
+	t_lista		*copy_a;
+	t_lista		*copy_b;
+	long int	bestnb;
+	int			r_a;
+	int			r_b;
 
 	r_a = 0;
 	r_b = 0;

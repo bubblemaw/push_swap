@@ -6,7 +6,7 @@
 /*   By: masase <masase@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/04 17:11:15 by masase            #+#    #+#             */
-/*   Updated: 2024/12/02 15:11:00 by masase           ###   ########.fr       */
+/*   Updated: 2024/12/05 16:24:41 by masase           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,10 +24,10 @@ typedef struct s_lista
 
 typedef struct s_price
 {
-	int	bestprice;
-	int	bestnb;
-	int	r_a;
-	int	r_b;
+	int			bestprice;
+	long int	bestnb;
+	int			r_a;
+	int			r_b;
 }	t_price;
 
 void			ft_lstclear_bis(t_lista **lst);
@@ -64,13 +64,12 @@ int				two_reverse_rotate(t_lista **stack_a, t_lista **stack_b, int x);
 
 int				rb_push_a_to_b(t_lista **stack_a, t_lista **stack_b, int x);
 int				ra_push_b_to_a(t_lista **stack_a, t_lista **stack_b, int x);
-int				r_a_calculator(int bestnb, t_lista **stack_a, int x);
-int				r_b_calculator(int bestnb, t_lista **stack_b, int x);
+int				r_a_calculator(long int bestnb, t_lista **stack_a, int x);
+int				r_b_calculator(long int bestnb, t_lista **stack_b, int x);
 int				search_bestnb_b(t_lista **stack_a, t_lista **stack_b);
 int				search_bestnb_a(t_lista **stack_a, t_lista **stack_b);
 void			pricechecking_b(t_lista **a, t_lista **b, t_price *data);
 void			pricechecking_a(t_lista **a, t_lista **b, t_price *data);
-int				rotatefornb(t_lista **stack_b, int bestnb, int x);
 
 int				push_above_max(t_lista **stack_b, int x);
 int				pushmiddle_a_to_b(t_lista **stack_a, t_lista **stack_b, int x);
@@ -81,7 +80,7 @@ int				getmax(t_lista **stack_b);
 int				getmin(t_lista **stack_b);
 int				newmax(t_lista **stack_a, t_lista **stack_b);
 int				newmin(t_lista **stack_a, t_lista **stack_b);
-int				searchnb(t_lista **lst, int nb);
+int				searchnb(t_lista **lst, long int nb);
 
 int				rota_push_b_true(t_lista **a, t_lista **b, int r_a, int r_b);
 int				rota_push_a_true(t_lista **a, t_lista **b, int r_a, int r_b);
@@ -95,6 +94,5 @@ void			secondsorting(t_lista **stack_a, t_lista **stack_b);
 int				tri_trois(t_lista **stack_a, int x);
 int				twoinput(t_lista **lst);
 int				threeinput(t_lista **lst);
-void			print_list(t_lista *head);
 
 #endif
